@@ -12,11 +12,13 @@ gem 'jbuilder',   '~> 2.7'
 gem 'bootsnap',    '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'sqlite3' 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
+  gem 'spring-commands-rspec'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
   gem 'spring'
