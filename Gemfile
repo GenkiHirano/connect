@@ -10,9 +10,10 @@ gem 'webpacker',  '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.7'
 gem 'bootsnap',    '>= 1.4.2', require: false
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
 
 group :development, :test do
-  gem 'sqlite3' 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -27,10 +28,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-end
-
-group :production do
-  gem 'pg'
 end
 
 gem 'tzinfo-data'
