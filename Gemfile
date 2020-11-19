@@ -10,8 +10,10 @@ gem 'webpacker',  '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.7'
 gem 'bootsnap',    '>= 1.4.2', require: false
+gem 'devise' 
 
 group :development, :test do
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'sqlite3' 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,6 +28,7 @@ group :development do
 end
 
 group :test do
+  gem 'webdrivers'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
