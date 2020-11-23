@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe ApplicationHelper, type: :helper do
-  describe '#full_title' do
+  describe 'タイトル' do
     it "full_titleの引数が空の場合、タイトルは#{Const::BASE_TITLE}'と等しい" do
       expect(full_title("")).to eq Const::BASE_TITLE
     end
