@@ -5,19 +5,19 @@ ruby '2.6.6'
 
 gem 'rails',      '~> 6.0.3', '>= 6.0.3.3'
 gem 'puma',       '~> 4.1'
-gem 'sass-rails',  '>= 6'
+gem 'sass-rails', '>= 6'
 gem 'webpacker',  '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.7'
 gem 'bootsnap',    '>= 1.4.2', require: false
 gem 'bootstrap-sass'
-gem 'devise' 
+gem 'devise'
 
 group :development, :test do
-  gem 'rubocop-airbnb' 
+  gem 'rubocop-airbnb'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'sqlite3' 
+  gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -33,7 +33,6 @@ group :test do
   gem 'webdrivers'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
 
 group :production do
