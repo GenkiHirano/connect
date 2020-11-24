@@ -42,6 +42,7 @@ RSpec.describe "Users", type: :system do
 
   describe "プロフィール編集ページ" do
     before do
+      login_for_system(user)
       visit edit_user_path(user)
     end
 
@@ -78,6 +79,7 @@ RSpec.describe "Users", type: :system do
   describe "プロフィールページ" do
     context "ページレイアウト" do
       before do
+        login_for_system(user)
         visit user_path(user)
       end
 
