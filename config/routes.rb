@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root 'static_pages#top'
   resources      :users
   get :signup, to: 'users#new'
