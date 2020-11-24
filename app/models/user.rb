@@ -35,7 +35,6 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-
   private
 
     def downcase_email
