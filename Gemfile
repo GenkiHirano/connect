@@ -14,6 +14,7 @@ gem 'bootsnap',    '>= 1.4.2', require: false
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'faker'
+gem 'jquery-rails'
 
 group :development, :test do
   gem "factory_bot_rails"
