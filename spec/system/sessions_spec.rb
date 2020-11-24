@@ -17,6 +17,10 @@ RSpec.describe "Sessions", type: :system do
         expect(page).to have_title full_title('ログイン')
       end
 
+      it "ヘッダーにログインページへのリンクがあることを確認" do
+        expect(page).to have_link 'ログイン', href: login_path
+      end
+
       it "ログインフォームのラベルが正しく表示される" do
         expect(page).to have_content 'メールアドレス'
         expect(page).to have_content 'パスワード'
