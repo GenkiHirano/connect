@@ -9,6 +9,10 @@ RSpec.describe "StaticPages", type: :system do
     it "「music_sns」の文字列が存在することを確認" do
       expect(page).to have_content 'music_sns'
     end
+
+    it "正しいタイトルが表示されることを確認" do
+      expect(page).to have_title full_title
+    end
   end
 
   describe "使い方ページ" do
@@ -18,6 +22,10 @@ RSpec.describe "StaticPages", type: :system do
 
     it "「music_sns」とは？の文字列が存在することを確認" do
       expect(page).to have_content 'music_snsとは？'
+    end
+
+    it "正しいタイトルが表示されることを確認" do
+      expect(page).to have_title full_title('music_snsとは？')
     end
   end
 end
