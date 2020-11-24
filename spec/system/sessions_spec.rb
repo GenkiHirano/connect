@@ -66,6 +66,7 @@ RSpec.describe "Sessions", type: :system do
         expect(page).to have_link 'music_snsとは？', href: about_path
         expect(page).to have_link 'ユーザー一覧', href: users_path
         expect(page).to have_link 'プロフィール', href: user_path(user)
+        expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
         expect(page).to have_link 'ログアウト', href: logout_path
       end
     end
