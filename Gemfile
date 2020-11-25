@@ -15,6 +15,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'faker'
 gem 'jquery-rails'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem "factory_bot_rails"
