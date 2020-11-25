@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
 
   def edit
@@ -36,10 +37,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def index
-    @users = User.all
   end
 
   private
