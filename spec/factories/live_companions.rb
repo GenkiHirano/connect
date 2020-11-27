@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :live_companion do
-    user_id { 1 }
-    artist_name { "MyString" }
-    live_name { "MyString" }
-    schedule { "2020-11-28" }
-    live_memo { "MyText" }
-    user { nil }
+    artist_name { "米津玄師" }
+    live_name { "米津玄師 2020 TOUR / HYPE" }
+    schedule { "2021-8-6" }
+    live_memo { "米民さん、誰か一緒にライブ行きませんか...？" }
+    association :user
   end
 end
