@@ -5,7 +5,7 @@ FactoryBot.define do
     schedule { "2021-8-6" }
     live_memo { "米民さん、誰か一緒にライブ行きませんか...？" }
     association :user
-    created_at { Time.current } 
+    created_at { Time.current }
   end
 
   trait :yesterday do

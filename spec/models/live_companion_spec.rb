@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe LiveCompanion, type: :model do
+  let!(:live_yesterday) { create(:live_companion, :yesterday) }
+  let!(:live_one_week_ago) { create(:live_companion, :one_week_ago) }
+  let!(:live_one_month_ago) { create(:live_companion, :one_month_ago) }
   let!(:live_companion) { create(:live_companion) }
 
   context "バリデーション" do
@@ -42,6 +45,12 @@ RSpec.describe LiveCompanion, type: :model do
       live_companion = build(:live_companion, user_id: nil)
       live_companion.valid?
       expect(live_companion.errors[:user_id]).to include("を入力してください")
+    end
+  end
+
+  context "並び順" do
+    it "最も最近の投稿が最初の投稿になっていること" do
+      expect(live_companion).to eq LiveCompanion.first
     end
   end
 end
