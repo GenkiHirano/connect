@@ -1,0 +1,2 @@
+class LiveCompanion < ApplicationRecord
+end
