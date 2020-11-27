@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe LiveCompanion, type: :model do
-
   let!(:live_companion) { create(:live_companion) }
 
   context "バリデーション" do
