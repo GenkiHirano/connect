@@ -17,7 +17,6 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'uglifier'
 
 group :development, :test do
   gem "factory_bot_rails"
