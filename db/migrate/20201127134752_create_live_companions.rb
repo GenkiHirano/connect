@@ -6,6 +6,7 @@ class CreateLiveCompanions < ActiveRecord::Migration[6.0]
       t.string :live_name
       t.date :schedule
       t.text :recruitment
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

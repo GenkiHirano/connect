@@ -5,5 +5,6 @@ FactoryBot.define do
     live_name { "MyString" }
     schedule { "2020-11-27" }
     recruitment { "MyText" }
+    user { nil }
   end
 end
