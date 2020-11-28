@@ -19,6 +19,20 @@ class LiveCompanionsController < ApplicationController
     end
   end
 
+  def edit
+    @live_companion = LiveCompanion.find(params[:id])
+  end
+
+  def update
+    @live_companion = LiveCompanion.find(params[:id])
+    if @live_companion.update_attributes(live_companion_params)
+      flash[:success] = "ライブ情報が更新されました！"
+      redirect_to @live_companion
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def live_companion_params
