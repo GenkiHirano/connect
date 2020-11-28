@@ -1,7 +1,14 @@
 <% if logged_in? %>
   <div class="container">
-    <h3>一緒にライブに行く人を見つけよう！ (<%= @live_items.count %>)</h3>
-    <%= render 'shared/live' %>
+    <div class="row">
+      <div class="col-md-9">
+        <h3>一緒にライブに行く人を見つけよう！ (<%= @live_items.count %>)</h3>
+        <%= render 'shared/live' %>
+      </div>
+      <div class="col-md-3">
+        <p><%= link_to "一緒にライブに行く人を募集する", new_live_companion_path, class: "btn btn-primary btn-lg btn-record" %></p>
+      </div>
+    </div>
   </div>
 <% else %>
   <center>
