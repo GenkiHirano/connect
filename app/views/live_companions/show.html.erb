@@ -1,8 +1,10 @@
 <% provide(:title, "#{@live_companion.artist_name}") %>
 <div class="container">
   <div class="row">
-    <h2 class="live_companion-name"><%= @live_companion.artist_name %></h2>
-    <h4><%= @live_companion.live_name %></h4>
-    <h4><%= @live_companion.live_memo %></h4>
+    <div class="other-info">
+      <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
+      <h4 class="live_name"><%= @live_companion.live_name %></h4>
+      <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
+    </div>
   </div>
 </div>

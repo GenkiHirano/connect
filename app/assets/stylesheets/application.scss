@@ -201,3 +201,34 @@ span.picture {
 .input-unneed {
   font-size: 13px;
 }
+
+.artist_name {
+  display: inline-block;
+}
+
+h2.artist_name {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.live_name {
+  h4 {
+    font-size: 20px;
+    display: inline-block;
+    
+  }
+}
+
+.live_memo {
+  h4 {
+    font-size: 20px;
+    display: inline-block;
+  }
+}
+
+.other-info {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
