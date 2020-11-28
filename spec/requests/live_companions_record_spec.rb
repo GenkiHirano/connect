@@ -15,7 +15,7 @@ RSpec.describe "ライブ同行者を募集する(投稿)", type: :request do
       expect(response).to render_template('live_companions/new')
     end
 
-    it "有効なライブ同行者データで登録できること" do
+    it "有効なライブ同行者データで投稿できること" do
       expect {
         post live_companions_path, params: { live_companion: { artist_name: "米津玄師",
                                                                live_name: "米津玄師 2020 TOUR / HYPE",
@@ -25,7 +25,7 @@ RSpec.describe "ライブ同行者を募集する(投稿)", type: :request do
       expect(response).to render_template('live_companions/show')
     end
 
-    it "無効なライブ同行者データでは登録できないこと" do
+    it "無効なライブ同行者データでは投稿できないこと" do
       expect {
         post live_companions_path, params: { live_companion: { artist_name: "",
                                                                live_name: "米津玄師 2020 TOUR / HYPE",
