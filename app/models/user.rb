@@ -22,6 +22,10 @@ class User < ApplicationRecord
     end
   end
 
+  def live
+    LiveCompanion.where("user_id = ?", id)
+  end  
+
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
@@ -34,10 +38,6 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
-  end
-
-  def live
-    LiveCompanion.where("user_id = ?", id)
   end
 
   private
