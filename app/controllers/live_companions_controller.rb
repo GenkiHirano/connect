@@ -1,0 +1,2 @@
+class LiveCompanionsController < ApplicationController
+end
