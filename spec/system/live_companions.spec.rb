@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "LiveCompanions", type: :system do
   let!(:user) { create(:user) }
+  let!(:live_companion) { create(:live_companion, user: user) }
 
   describe "ライブ同行者募集投稿ページ" do
     before do
@@ -40,6 +41,25 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "ライブメモ", with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_content "アーティスト名を入力してください"
+      end
+    end
+  end
+
+  describe "投稿詳細ページ" do
+    context "ページレイアウト" do
+      before do
+        login_for_system(user)
+        visit live_companion_path(live_companion)
+      end
+
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title("#{live_companion.artist_name}")
+      end
+
+      it "ライブ情報が表示されること" do
+        expect(page).to have_content live_companion.artist_name
+        expect(page).to have_content live_companion.live_name
+        expect(page).to have_content live_companion.live_memo
       end
     end
   end
