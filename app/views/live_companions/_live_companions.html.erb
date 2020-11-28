@@ -1,9 +1,0 @@
-<li id="dish-<%= live_companions.id %>">
-  <%= link_to gravatar_for(live_companions.user, size: 50), live_companions.user %>
-  <span class="artist_name"><%= link_to live_companions.artist_name, "#" %></span>
-  <span class="live_name"><%= link_to live_companions.live_name, "#" %></span>
-  <span class="live_memo"><%= live_companions.live_memo %></span><br>
-  <span class="timestamp">
-    <%= time_ago_in_words(live_companions.created_at) %>前に投稿
-  </span>
-</li>

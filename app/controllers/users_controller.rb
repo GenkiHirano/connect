@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @live_companions = @user.live_companions.paginate(page: params[:page], per_page: 5) 
+    @live_companions = @user.live_companions.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
