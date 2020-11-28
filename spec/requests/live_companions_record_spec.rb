@@ -22,7 +22,7 @@ RSpec.describe "ライブ同行者を募集する(投稿)", type: :request do
                                                                live_memo: "誰か、米津玄師さんの一緒にライブ行きませんか...？" } }
       }.to change(LiveCompanion, :count).by(1)
       follow_redirect!
-      expect(response).to render_template('static_pages/top')
+      expect(response).to render_template('live_companions/show')
     end
 
     it "無効なライブ同行者データでは登録できないこと" do
