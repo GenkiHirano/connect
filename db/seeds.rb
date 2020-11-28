@@ -16,8 +16,9 @@ end
 
 10.times do |n|
   LiveCompanion.create!(
-               artist_name: "米津玄師",
-               live_name: "米津玄師 2020 TOUR / HYPE",
-               live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
-               user_id: 1)
+    artist_name: "米津玄師",
+    live_name: "米津玄師 2020 TOUR / HYPE",
+    live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+    user_id: 1
+  )
 end

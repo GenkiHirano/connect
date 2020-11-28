@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-9">
       <% if @user.live_companions.any? %>
-        <h3>ライブ同行者 (<%= @user.live_companions.count %>)</h3>
+        <h3>ライブ同行者募集 (<%= @user.live_companions.count %>)</h3>
         <ol class="live_companions">
           <%= render @live_companions %>
         </ol>

@@ -121,6 +121,7 @@ RSpec.describe "Users", type: :system do
     context "ページレイアウト" do
       before do
         login_for_system(user)
+        create_list(:live_companion, 10, user: user)
         visit user_path(user)
       end
 
@@ -136,6 +137,23 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
         expect(page).to have_content user.sex
+      end
+
+      it "投稿の件数が表示されていることを確認" do
+        expect(page).to have_content "ライブ同行者募集 (#{user.live_companions.count})"
+      end
+
+      it "投稿の情報が表示されていることを確認" do
+        LiveCompanion.take(5).each do |live_companion|
+          expect(page).to have_link live_companion.artist_name
+          expect(page).to have_link live_companion.live_name
+          expect(page).to have_content live_companion.live_memo
+          expect(page).to have_content live_companion.user.name
+        end
+      end
+
+      it "投稿のページネーションが表示されていることを確認" do
+        expect(page).to have_css "div.pagination"
       end
     end
   end
