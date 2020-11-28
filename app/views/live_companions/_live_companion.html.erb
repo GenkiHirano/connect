@@ -1,7 +1,7 @@
 <li id="live_companion-<%= live_companion.id %>">
   <%= link_to gravatar_for(live_companion.user, size: 50), live_companion.user %>
-  <span class="artist_name"><%= link_to live_companion.artist_name, "#" %></span>
-  <span class="live_name"><%= link_to live_companion.live_name, "#" %></span>
+  <span class="artist_name"><%= link_to live_companion.artist_name, live_companion_path(live_companion) %></span>
+  <span class="live_name"><%= link_to live_companion.live_name, live_companion_path(live_companion) %></span>
   <span class="live_memo"><%= live_companion.live_memo %></span><br>
   <span class="timestamp">
     <%= time_ago_in_words(live_companion.created_at) %>前に投稿
