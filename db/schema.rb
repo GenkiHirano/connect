@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_11_27_150900) do
-
   create_table "live_companions", force: :cascade do |t|
     t.string "artist_name"
     t.string "live_name"

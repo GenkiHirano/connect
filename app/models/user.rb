@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   def live
     LiveCompanion.where("user_id = ?", id)
-  end  
+  end
 
   def remember
     self.remember_token = User.new_token
