@@ -1,5 +1,6 @@
 class LiveCompanionsController < ApplicationController
   before_action :logged_in_user
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @live_companion = LiveCompanion.new
@@ -37,5 +38,10 @@ class LiveCompanionsController < ApplicationController
 
     def live_companion_params
       params.require(:live_companion).permit(:artist_name, :live_name, :live_memo)
+    end
+
+    def correct_user
+      @live_companion = current_user.live_companions.find_by(id: params[:id])
+      redirect_to root_url if @live_companion.nil?
     end
 end
