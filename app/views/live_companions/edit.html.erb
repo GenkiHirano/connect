@@ -1,0 +1,23 @@
+<% provide(:title, "同行ライブ情報の編集") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@live_companion) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class = 'form-group'>
+          <%= f.label :artist_name %>　<span class="input-need">※必須</span>
+          <%= f.text_field :artist_name, class: 'form-control', id: 'artist_name' %>
+        </div>
+        <div class = 'form-group'>
+          <%= f.label :live_name %>　<span class="input-need">※必須</span>
+          <%= f.text_field :live_name, class: 'form-control', id: 'live_name' %>
+        </div>
+        <div class = 'form-group'>
+          <%= f.label :live_memo %> 　<span class="input-unneed">※任意</span>
+          <%= f.text_field :live_memo, class: 'form-control', id: 'live_memo' %>
+        </div>
+        <%= f.submit "更新する", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
