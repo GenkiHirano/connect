@@ -3,6 +3,11 @@
   <div class="row">
     <div class="other-info">
       <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
+      <div class="change-live_companion">
+        <% if current_user == @live_companion.user %>
+          <%= link_to "編集", edit_live_companion_path(@live_companion), class: 'edit-live_companion' %>　
+        <% end %>
+      </div>
       <h4 class="live_name"><%= @live_companion.live_name %></h4>
       <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
     </div>
