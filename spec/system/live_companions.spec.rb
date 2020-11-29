@@ -63,4 +63,44 @@ RSpec.describe "LiveCompanions", type: :system do
       end
     end
   end
+
+  describe "投稿編集ページ" do
+    before do
+      login_for_system(user)
+      visit live_companion_path(live_companion)
+      click_link "編集"
+    end
+
+    context "ページレイアウト" do
+      it "正しいタイトルが表示されること" do
+        expect(page).to have_title full_title('同行ライブ情報の編集')
+      end
+
+      it "入力部分に適切なラベルが表示されること" do
+        expect(page).to have_content 'アーティスト名'
+        expect(page).to have_content 'ライブ名'
+        expect(page).to have_content 'ライブメモ'
+      end
+    end
+
+    context "投稿の編集処理" do
+      it "有効な更新" do
+        fill_in "アーティスト名", with: "編集：米津玄師"
+        fill_in "ライブ名", with: "編集：米津玄師 2020 TOUR / HYPE"
+        fill_in "ライブメモ", with: "編集：誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        click_button "更新する"
+        expect(page).to have_content "ライブ情報が更新されました！"
+        expect(live_companion.reload.artist_name).to eq "編集：米津玄師"
+        expect(live_companion.reload.live_name).to eq "編集：米津玄師 2020 TOUR / HYPE"
+        expect(live_companion.reload.live_memo).to eq "編集：誰か、米津玄師さんの一緒にライブ行きませんか...？"
+      end
+
+      it "無効な更新" do
+        fill_in "アーティスト", with: ""
+        click_button "更新する"
+        expect(page).to have_content 'アーティスト名を入力してください'
+        expect(live_companion.reload.artist_name).not_to eq ""
+      end
+    end
+  end
 end
