@@ -5,10 +5,10 @@ RSpec.describe "料理編集", type: :request do
   let!(:live_companion) { create(:live_companion, user: user) }
 
   context "認可されたユーザーの場合" do
-    it "レスポンスが正常に表示されること" do
-      login_for_request(user)
+    it "レスポンスが正常に表示されること(+フレンドリーフォワーディング)" do
       get edit_live_companion_path(live_companion)
-      expect(response).to render_template('live_companions/edit')
+      login_for_request(user)
+      expect(response).to redirect_to edit_live_companion_url(live_companion)
       patch live_companion_path(live_companion), params: { live_companion: {
         artist_name: "米津玄師",
         live_name: "米津玄師 2020 TOUR / HYPE",
