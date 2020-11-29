@@ -17,6 +17,8 @@
           <%= f.text_field :live_memo, class: 'form-control', id: 'live_memo' %>
         </div>
         <%= f.submit "更新する", class: "btn btn-primary" %>
+        <%= link_to "投稿を削除する", live_companion_path(@live_companion), method: :delete,
+                             data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
       <% end %>
     </div>
   </div>
