@@ -62,6 +62,18 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content live_companion.live_memo
       end
     end
+
+    context "投稿の削除", js: true do
+      it "削除成功のフラッシュが表示されること" do
+        login_for_system(user)
+        visit live_companion_path(live_companion)
+        within find('.change-live_companion') do
+          click_on '削除'
+        end
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content '投稿が削除されました'
+      end
+    end
   end
 
   describe "投稿編集ページ" do
@@ -80,6 +92,14 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content 'アーティスト名'
         expect(page).to have_content 'ライブ名'
         expect(page).to have_content 'ライブメモ'
+      end
+
+      context "投稿の削除処理", js: true do
+        it "削除成功のフラッシュが表示されること" do
+          click_on '削除'
+          page.driver.browser.switch_to.alert.accept
+          expect(page).to have_content '投稿が削除されました'
+        end
       end
     end
 
