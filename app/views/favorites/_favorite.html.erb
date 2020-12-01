@@ -6,7 +6,7 @@
       <p><%= link_to @live_companion.artist_name, live_companion_path(@live_companion) %></p>
       <p><%= link_to @live_companion.live_name, live_companion_path(@live_companion) %></p>
       <p><%= @live_companion.live_memo %></p>
-      <p class="cook-user">投稿者 <%= link_to user.name, user_path(user) %></p>
+      <p class="live_companion-user">投稿者 <%= link_to user.name, user_path(user) %></p>
     </div>
   </div>
 </li>
