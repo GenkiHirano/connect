@@ -65,6 +65,18 @@ class User < ApplicationRecord
     followers.include?(other_user)
   end
 
+  def favorite(live_companion)
+    Favorite.create!(user_id: id, live_companion_id: live_companion.id)
+  end
+
+  def unfavorite(live_companion)
+    Favorite.find_by(user_id: id, live_companion_id: live_companion.id).destroy
+  end
+
+  def favorite?(live_companion)
+    !Favorite.find_by(user_id: id, live_companion_id: live_companion.id).nil?
+  end
+
   private
 
     def downcase_email
