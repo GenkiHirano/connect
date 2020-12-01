@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.7'
 gem 'bootsnap',    '>= 1.4.2', require: false
 gem 'bootstrap-sass'
+gem 'devise'
 gem 'faker'
 gem 'jquery-rails'
 gem 'will_paginate'
