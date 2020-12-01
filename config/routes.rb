@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'static_pages#top'
   resources :live_companions
+  resources :relationships, only: [:create, :destroy]
   resources :users do
     member do
       get :following, :followers
