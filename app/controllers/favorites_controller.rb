@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   def create
     @live_companion = LiveCompanion.find(params[:live_companion_id])
     @user = @live_companion.user
-    current_user.favorite(@dish)
+    current_user.favorite(@live_companion)
     respond_to do |format|
       format.html { redirect_to request.referrer || root_url }
       format.js
