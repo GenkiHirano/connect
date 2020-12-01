@@ -183,6 +183,42 @@ RSpec.describe "Users", type: :system do
         user.unfavorite(live_companion)
         expect(user.favorite?(live_companion)).to be_falsey
       end
+
+      it "トップページからお気に入り登録/解除ができること", js: true do
+        visit root_path
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+      end
+
+      it "ユーザー個別ページからお気に入り登録/解除ができること", js: true do
+        visit user_path(user)
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+      end
+
+      it "投稿個別ページからお気に入り登録/解除ができること", js: true do
+        visit live_companion_path(live_companion)
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+        link.click
+        link = find('.unlike')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/destroy"
+        link.click
+        link = find('.like')
+        expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+      end
     end
   end
 end
