@@ -5,6 +5,7 @@ RSpec.describe "Users", type: :system do
   let!(:admin_user) { create(:user, :admin) }
   let!(:other_user) { create(:user) }
   let!(:live_companion) { create(:live_companion, user: user) }
+  let!(:other_live_companion) { create(:live_companion, user: other_user) }
 
   describe "ユーザー一覧ページ" do
     context "管理者ユーザーの場合" do
@@ -218,6 +219,32 @@ RSpec.describe "Users", type: :system do
         link.click
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
+      end
+
+      it "お気に入り一覧ページが期待通り表示されること" do
+        visit favorites_path
+        expect(page).not_to have_css ".favorite-live_companion"
+        user.favorite(live_companion)
+        user.favorite(other_live_companion)
+        visit favorites_path
+        expect(page).to have_css ".favorite-live_companion", count: 2
+        expect(page).to have_content live_companion.artist_name
+        expect(page).to have_content live_companion.live_name
+        expect(page).to have_content live_companion.live_memo
+        expect(page).to have_content "投稿者 #{user.name}"
+        expect(page).to have_link user.name, href: user_path(user)
+        expect(page).to have_content live_companion.artist_name
+        expect(page).to have_content live_companion.live_name
+        expect(page).to have_content live_companion.live_memo
+        expect(page).to have_content "投稿者 #{user.name}"
+        expect(page).to have_link other_user.name, href: user_path(other_user)
+        user.unfavorite(other_live_companion)
+        visit favorites_path
+        expect(page).to have_css ".favorite-live_companion", count: 1
+        expect(page).to have_content live_companion.artist_name
+        expect(page).to have_content live_companion.live_name
+        expect(page).to have_content live_companion.live_memo
+        expect(page).to have_content "投稿者 #{user.name}"
       end
     end
   end
