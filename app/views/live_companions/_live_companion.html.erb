@@ -1,3 +1,4 @@
+<% @live_companion = live_companion %>
 <li id="live_companion-<%= live_companion.id %>">
   <%= link_to gravatar_for(live_companion.user, size: 50), live_companion.user %>
   <span class="artist_name"><%= link_to live_companion.artist_name, live_companion_path(live_companion) %></span>
@@ -10,4 +11,5 @@
     <%= link_to "削除", live_companion_path(live_companion), method: :delete,
                        data: { confirm: "本当に削除しますか？" } %>
   <% end %>
+  <%= render 'users/favorite_form' %>
 </li>
