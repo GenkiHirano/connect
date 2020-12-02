@@ -7,5 +7,7 @@ class CreateComments < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :comments, :user_id
+    add_index :comments, :live_companion_id  
   end
 end
