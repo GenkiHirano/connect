@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "LiveCompanions", type: :system do
   let!(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
   let!(:live_companion) { create(:live_companion, user: user) }
+  let!(:comment) { create(:comment, user_id: user.id, live_companion: live_companion) }
 
   describe "ライブ同行者募集投稿ページ" do
     before do
@@ -28,17 +30,17 @@ RSpec.describe "LiveCompanions", type: :system do
 
     context "ライブ同行者募集投稿処理" do
       it "有効な情報でライブ同行者募集投稿を行うと「ライブ同行者の募集が完了しました！」のフラッシュが表示されること" do
-        fill_in "アーティスト名", with: "米津玄師"
-        fill_in "ライブ名", with: "米津玄師 2020 TOUR / HYPE"
-        fill_in "ライブメモ", with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        fill_in "live_companion[artist_name]", with: "米津玄師"
+        fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
+        fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_content "ライブ同行者の募集が完了しました！"
       end
 
       it "無効な情報でライブ同行者募集投稿を行うと登録失敗のフラッシュが表示されること" do
-        fill_in "アーティスト名", with: ""
-        fill_in "ライブ名", with: "米津玄師 2020 TOUR / HYPE"
-        fill_in "ライブメモ", with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        fill_in "live_companion[artist_name]", with: ""
+        fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
+        fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_content "アーティスト名を入力してください"
       end
@@ -74,6 +76,33 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content '投稿が削除されました'
       end
     end
+
+    context "コメントの登録＆削除" do
+      it "自分の投稿に対するコメントの登録＆削除が正常に完了すること" do
+        login_for_system(user)
+        visit live_companion_path(live_companion)
+        fill_in "comment_content", with: "誰か一緒に行きましょう！"
+        click_button "コメント"
+        within find("#comment-#{Comment.last.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: '誰か一緒に行きましょう！'
+        end
+        expect(page).to have_content "コメントを追加しました！"
+        click_link "削除", href: comment_path(Comment.last)
+        expect(page).not_to have_selector 'span', text: '誰か一緒に行きましょう！'
+        expect(page).to have_content "コメントを削除しました"
+      end
+
+      it "別ユーザーの投稿コメントには削除リンクが無いこと" do
+        login_for_system(other_user)
+        visit live_companion_path(live_companion)
+        within find("#comment-#{comment.id}") do
+          expect(page).to have_selector 'span', text: user.name
+          expect(page).to have_selector 'span', text: comment.content
+          expect(page).not_to have_link '削除', href: live_companion_path(live_companion)
+        end
+      end
+    end
   end
 
   describe "投稿編集ページ" do
@@ -105,9 +134,9 @@ RSpec.describe "LiveCompanions", type: :system do
 
     context "投稿の編集処理" do
       it "有効な更新" do
-        fill_in "アーティスト名", with: "編集：米津玄師"
-        fill_in "ライブ名", with: "編集：米津玄師 2020 TOUR / HYPE"
-        fill_in "ライブメモ", with: "編集：誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        fill_in "live_companion[artist_name]", with: "編集：米津玄師"
+        fill_in "live_companion[live_name]",   with: "編集：米津玄師 2020 TOUR / HYPE"
+        fill_in "live_companion[live_memo]",   with: "編集：誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "更新する"
         expect(page).to have_content "ライブ情報が更新されました！"
         expect(live_companion.reload.artist_name).to eq "編集：米津玄師"
@@ -116,7 +145,7 @@ RSpec.describe "LiveCompanions", type: :system do
       end
 
       it "無効な更新" do
-        fill_in "アーティスト", with: ""
+        fill_in "live_companion[artist_name]", with: ""
         click_button "更新する"
         expect(page).to have_content 'アーティスト名を入力してください'
         expect(live_companion.reload.artist_name).not_to eq ""
