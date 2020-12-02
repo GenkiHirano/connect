@@ -8,6 +8,7 @@ class LiveCompanionsController < ApplicationController
 
   def show
     @live_companion = LiveCompanion.find(params[:id])
+    @comment = Comment.new
   end
 
   def create
