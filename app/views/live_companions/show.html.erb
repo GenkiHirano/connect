@@ -1,4 +1,5 @@
 <% provide(:title, "#{@live_companion.artist_name}") %>
+<% @comments  = @live_companion.feed_comment(@live_companion.id) %>
 <div class="container">
   <div class="row">
     <div class="other-info">
@@ -15,6 +16,7 @@
       <h4 class="live_name"><%= @live_companion.live_name %></h4>
       <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
       <div class="comment">
+        <%= render "comments/feed_comments" %>
         <%= render "comments/new" %>
       </div>
       <%= render 'users/favorite_form' %>

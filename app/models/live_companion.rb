@@ -8,7 +8,7 @@ class LiveCompanion < ApplicationRecord
   validates :live_name, presence: true, length: { maximum: 30 }
   validates :live_memo, length: { maximum: 140 }
 
-  def live_comment(live_companion_id)
+  def feed_comment(live_companion_id)
     Comment.where("live_companion_id = ?", live_companion_id)
   end
 end
