@@ -14,8 +14,10 @@
       </div>
       <h4 class="live_name"><%= @live_companion.live_name %></h4>
       <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
+      <div class="comment">
+        <%= render "comments/new" %>
+      </div>
       <%= render 'users/favorite_form' %>
-    </div>
     </div>
   </div>
 </div>
