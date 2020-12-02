@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    live_companion_id { 1 }
     user_id { 1 }
-    content { "MyText" }
+    content { "よかったら一緒に行きませんか...？ 私もちょうど行きたかったんです！" }
+    association :live_companion
   end
 end
