@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
-  get 'sessions/new'
   root 'static_pages#top'
   resources :live_companions
   resources :relationships, only: [:create, :destroy]
   resources :comments,      only: [:create, :destroy]
+  resources :notifications, only: :index
   resources :users do
     member do
       get :following, :followers
