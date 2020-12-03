@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   get 'sessions/new'
   root 'static_pages#top'
   resources :live_companions
