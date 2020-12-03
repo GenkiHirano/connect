@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_144627) do
+ActiveRecord::Schema.define(version: 2020_12_03_142718) do
+
   create_table "comments", force: :cascade do |t|
     t.integer "live_companion_id"
     t.integer "user_id"
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_144627) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
+    t.boolean "notification", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
