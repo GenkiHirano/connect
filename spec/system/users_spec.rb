@@ -247,5 +247,81 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content "投稿者 #{user.name}"
       end
     end
+
+    context "通知生成" do
+      before do
+        login_for_system(user)
+      end
+
+      context "自分以外のユーザーの投稿に対して" do
+        before do
+          visit live_companion_path(other_live_companion)
+        end
+
+        it "お気に入り登録によって通知が作成されること" do
+          find('.like').click
+          visit live_companion_path(other_live_companion)
+          expect(page).to have_css 'li.no_notification'
+          logout
+          login_for_system(other_user)
+          expect(page).to have_css 'li.new_notification'
+          visit notifications_path
+          expect(page).to have_css 'li.no_notification'
+          expect(page).to have_content "あなたの投稿が#{user.name}さんにお気に入り登録されました。"
+          expect(page).to have_content other_live_companion.artist_name
+          expect(page).to have_content other_live_companion.live_name
+          expect(page).to have_content other_live_companion.live_memo
+          expect(page).to have_content other_live_companion.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+        end
+
+        it "コメントによって通知が作成されること" do
+          fill_in "comment_content", with: "コメントしました"
+          click_button "コメント"
+          expect(page).to have_css 'li.no_notification'
+          logout
+          login_for_system(other_user)
+          expect(page).to have_css 'li.new_notification'
+          visit notifications_path
+          expect(page).to have_css 'li.no_notification'
+          expect(page).to have_content "あなたの投稿に#{user.name}さんがコメントしました。"
+          expect(page).to have_content '「コメントしました」'
+          expect(page).to have_content other_live_companion.artist_name
+          expect(page).to have_content other_live_companion.live_name
+          expect(page).to have_content other_live_companion.live_memo
+          expect(page).to have_content other_live_companion.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+        end
+      end
+
+      context "自分の投稿に対して" do
+        before do
+          visit live_companion_path(live_companion)
+        end
+
+        it "お気に入り登録によって通知が作成されないこと" do
+          find('.like').click
+          visit live_companion_path(live_companion)
+          expect(page).to have_css 'li.no_notification'
+          visit notifications_path
+          expect(page).not_to have_content 'お気に入りに登録されました。'
+          expect(page).not_to have_content live_companion.artist_name
+          expect(page).not_to have_content live_companion.live_name
+          expect(page).not_to have_content live_companion.live_memo
+          expect(page).not_to have_content live_companion.created_at
+        end
+
+        it "コメントによって通知が作成されないこと" do
+          fill_in "comment_content", with: "自分でコメント"
+          click_button "コメント"
+          expect(page).to have_css 'li.no_notification'
+          visit notifications_path
+          expect(page).not_to have_content 'コメントしました。'
+          expect(page).not_to have_content '自分でコメント'
+          expect(page).not_to have_content other_live_companion.artist_name
+          expect(page).not_to have_content other_live_companion.live_name
+          expect(page).not_to have_content other_live_companion.live_memo
+          expect(page).not_to have_content other_live_companion.created_at
+        end
+      end
+    end
   end
 end
