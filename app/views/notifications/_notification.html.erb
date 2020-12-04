@@ -1,5 +1,5 @@
 <% user = User.find(notification.from_user_id) %>
-<% dish = LiveCompanion.find(notification.live_companion_id) %>
+<% live_companion = LiveCompanion.find(notification.live_companion_id) %>
 <li id="notification-<%= notification.id %>">
   <div>
     <% if notification.variety == 1 %>
