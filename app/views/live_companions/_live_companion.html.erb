@@ -1,6 +1,9 @@
 <% @live_companion = live_companion %>
 <li id="live_companion-<%= live_companion.id %>">
   <%= link_to gravatar_for(live_companion.user, size: 50), live_companion.user %>
+  <span>
+    <%= link_to((image_tag live_companion.picture.url), live_companion_path(live_companion.id), class: 'live_companion-picture') if live_companion.picture.url.present? %>
+  </span>
   <span class="artist_name"><%= link_to live_companion.artist_name, live_companion_path(live_companion) %></span>
   <span class="live_name"><%= link_to live_companion.live_name, live_companion_path(live_companion) %></span>
   <span class="live_memo"><%= live_companion.live_memo %></span><br>
