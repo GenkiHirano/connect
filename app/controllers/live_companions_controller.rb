@@ -50,7 +50,7 @@ class LiveCompanionsController < ApplicationController
   private
 
     def live_companion_params
-      params.require(:live_companion).permit(:artist_name, :live_name, :live_memo)
+      params.require(:live_companion).permit(:artist_name, :live_name, :live_memo, :picture)
     end
 
     def correct_user
