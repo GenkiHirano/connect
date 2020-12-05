@@ -17,6 +17,8 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave'
+gem "mini_magick"
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -43,6 +45,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'fog'
 end
 
 gem 'tzinfo-data'
