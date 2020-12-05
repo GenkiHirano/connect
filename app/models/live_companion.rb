@@ -12,4 +12,12 @@ class LiveCompanion < ApplicationRecord
   def feed_comment(live_companion_id)
     Comment.where("live_companion_id = ?", live_companion_id)
   end
+
+  private
+
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "：5MBより大きい画像はアップロードできません。")
+    end
+  end
 end
