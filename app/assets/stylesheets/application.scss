@@ -304,3 +304,9 @@ li.new_notification > a > span {
 .notification-message {
   font-size: 16px;
 }
+
+.live_companion-picture img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
