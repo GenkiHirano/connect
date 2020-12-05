@@ -25,6 +25,7 @@ ja:
         id: ID
         artist_name: アーティスト名
         live_name: ライブ名
+        picture: 投稿の写真
         schedule: 日程
         live_memo: ライブメモ
       comment:
