@@ -5,7 +5,7 @@
     <div class="other-info">
     <div class="col-md-4">
       <span class="picture">
-        <%= link_to((image_tag @live_companion.picture.url), live_companion_path(@live_companion.id), class: 'live_companion-picture') if @live_companion.picture.url.present? %>
+        <%= link_to((image_tag @live_companion.picture.thumb400.url), live_companion_path(@live_companion.id), class: 'live_companion-picture') if @live_companion.picture.url.present? %>
       </span>
     </div>
       <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
