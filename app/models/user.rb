@@ -81,10 +81,6 @@ class User < ApplicationRecord
     !Favorite.find_by(user_id: id, live_companion_id: live_companion.id).nil?
   end
 
-  def live
-    LiveCompanion.where("user_id = ?", id)
-  end
-
   private
 
     def downcase_email
