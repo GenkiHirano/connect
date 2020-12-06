@@ -172,12 +172,12 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    context "お気に入り登録/解除" do
+    context "気になる登録/解除" do
       before do
         login_for_system(user)
       end
 
-      it "ライブ同行者募集投稿のお気に入り登録/解除ができること" do
+      it "ライブ同行者募集投稿の気になる登録/解除ができること" do
         expect(user.favorite?(live_companion)).to be_falsey
         user.favorite(live_companion)
         expect(user.favorite?(live_companion)).to be_truthy
@@ -185,7 +185,7 @@ RSpec.describe "Users", type: :system do
         expect(user.favorite?(live_companion)).to be_falsey
       end
 
-      it "トップページからお気に入り登録/解除ができること", js: true do
+      it "トップページから気になる登録/解除ができること", js: true do
         visit root_path
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
@@ -197,7 +197,7 @@ RSpec.describe "Users", type: :system do
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
       end
 
-      it "ユーザー個別ページからお気に入り登録/解除ができること", js: true do
+      it "ユーザー個別ページから気になる登録/解除ができること", js: true do
         visit user_path(user)
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
@@ -209,7 +209,7 @@ RSpec.describe "Users", type: :system do
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
       end
 
-      it "投稿個別ページからお気に入り登録/解除ができること", js: true do
+      it "投稿個別ページから気になる登録/解除ができること", js: true do
         visit live_companion_path(live_companion)
         link = find('.like')
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
@@ -221,7 +221,7 @@ RSpec.describe "Users", type: :system do
         expect(link[:href]).to include "/favorites/#{live_companion.id}/create"
       end
 
-      it "お気に入り一覧ページが期待通り表示されること" do
+      it "気になる一覧ページが期待通り表示されること" do
         visit favorites_path
         expect(page).not_to have_css ".favorite-live_companion"
         user.favorite(live_companion)
@@ -258,7 +258,7 @@ RSpec.describe "Users", type: :system do
           visit live_companion_path(other_live_companion)
         end
 
-        it "お気に入り登録によって通知が作成されること" do
+        it "気になる登録によって通知が作成されること" do
           find('.like').click
           visit live_companion_path(other_live_companion)
           expect(page).to have_css 'li.no_notification'
@@ -267,7 +267,7 @@ RSpec.describe "Users", type: :system do
           expect(page).to have_css 'li.new_notification'
           visit notifications_path
           expect(page).to have_css 'li.no_notification'
-          expect(page).to have_content "あなたの投稿が#{user.name}さんにお気に入り登録されました。"
+          expect(page).to have_content "あなたの投稿が#{user.name}さんに気になる登録されました。"
           expect(page).to have_content other_live_companion.artist_name
           expect(page).to have_content other_live_companion.live_name
           expect(page).to have_content other_live_companion.live_memo
@@ -297,12 +297,12 @@ RSpec.describe "Users", type: :system do
           visit live_companion_path(live_companion)
         end
 
-        it "お気に入り登録によって通知が作成されないこと" do
+        it "気になる登録によって通知が作成されないこと" do
           find('.like').click
           visit live_companion_path(live_companion)
           expect(page).to have_css 'li.no_notification'
           visit notifications_path
-          expect(page).not_to have_content 'お気に入りに登録されました。'
+          expect(page).not_to have_content '気になるに登録されました。'
           expect(page).not_to have_content live_companion.artist_name
           expect(page).not_to have_content live_companion.live_name
           expect(page).not_to have_content live_companion.live_memo

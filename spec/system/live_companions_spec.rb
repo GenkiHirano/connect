@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "LiveCompanions", type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:live_companion) { create(:live_companion, user: user) }
+  let!(:live_companion) { create(:live_companion, :picture, user: user) }
   let!(:comment) { create(:comment, user_id: user.id, live_companion: live_companion) }
 
   describe "ライブ同行者募集投稿ページ" do
@@ -33,8 +33,17 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: "米津玄師"
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion.jpg"
         click_button "登録する"
         expect(page).to have_content "ライブ同行者の募集が完了しました！"
+      end
+
+      it "画像無しで登録すると、デフォルト画像が割り当てられること" do
+        fill_in "live_companion[artist_name]", with: "米津玄師"
+        fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
+        fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        click_button "登録する"
+        expect(page).to have_link(href: live_companion_path(LiveCompanion.first))
       end
 
       it "無効な情報でライブ同行者募集投稿を行うと登録失敗のフラッシュが表示されること" do
@@ -62,6 +71,7 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content live_companion.artist_name
         expect(page).to have_content live_companion.live_name
         expect(page).to have_content live_companion.live_memo
+        expect(page).to have_link nil, href: live_companion_path(live_companion), class: 'live_companion-picture'
       end
     end
 
@@ -132,16 +142,18 @@ RSpec.describe "LiveCompanions", type: :system do
       end
     end
 
-    context "投稿の編集処理" do
+    context "投稿の更新処理" do
       it "有効な更新" do
         fill_in "live_companion[artist_name]", with: "編集：米津玄師"
         fill_in "live_companion[live_name]",   with: "編集：米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[live_memo]",   with: "編集：誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion2.jpg"
         click_button "更新する"
         expect(page).to have_content "ライブ情報が更新されました！"
         expect(live_companion.reload.artist_name).to eq "編集：米津玄師"
         expect(live_companion.reload.live_name).to eq "編集：米津玄師 2020 TOUR / HYPE"
         expect(live_companion.reload.live_memo).to eq "編集：誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        expect(live_companion.reload.picture.url).to include "test_live_companion2.jpg"
       end
 
       it "無効な更新" do

@@ -5,7 +5,7 @@ RSpec.describe "投稿編集", type: :request do
   let!(:other_user) { create(:user) }
   let!(:live_companion) { create(:live_companion, user: user) }
   let(:picture2_path) { File.join(Rails.root, 'spec/fixtures/test_live_companion2.jpg') }
-  let(:picture2) { Rack::Test::UploadedFile.new(picture2_path) } 
+  let(:picture2) { Rack::Test::UploadedFile.new(picture2_path) }
 
   context "認可されたユーザーの場合" do
     it "レスポンスが正常に表示されること(+フレンドリーフォワーディング)" do
