@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <h3>一緒にライブに行く人を見つけよう！ (<%= @live_items.count %>)</h3>
-        <%= render 'shared/live' %>
+        <h3>一緒にライブに行く人を見つけよう！ (<%= @feed_items.count %>)</h3>
+        <%= render 'shared/feed' %>
       </div>
       <div class="col-md-3">
         <p><%= link_to "一緒にライブに行く人を募集する", new_live_companion_path, class: "btn btn-primary btn-lg btn-record" %></p>

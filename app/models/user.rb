@@ -32,17 +32,6 @@ class User < ApplicationRecord
     end
   end
 
-  def live
-    LiveCompanion.where("user_id = ?", id)
-  end
-
-  def feed
-    following_ids = "SELECT followed_id FROM relationships
-                     WHERE follower_id = :user_id"
-    LiveCompanion.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
-  end
-
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
@@ -55,6 +44,13 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+                     LiveCompanion.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
   end
 
   def follow(other_user)
@@ -83,6 +79,10 @@ class User < ApplicationRecord
 
   def favorite?(live_companion)
     !Favorite.find_by(user_id: id, live_companion_id: live_companion.id).nil?
+  end
+
+  def live
+    LiveCompanion.where("user_id = ?", id)
   end
 
   private

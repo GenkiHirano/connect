@@ -149,7 +149,7 @@ RSpec.describe "Users", type: :system do
       it "投稿の情報が表示されていることを確認" do
         LiveCompanion.take(5).each do |live_companion|
           expect(page).to have_link live_companion.artist_name
-          expect(page).to have_link live_companion.live_name
+          expect(page).to have_content live_companion.live_name
           expect(page).to have_content live_companion.live_memo
           expect(page).to have_content live_companion.user.name
         end
