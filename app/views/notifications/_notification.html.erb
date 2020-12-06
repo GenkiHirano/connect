@@ -4,7 +4,7 @@
   <div>
     <% if notification.variety == 1 %>
       <p><%= notification.created_at.strftime("%Y/%m/%d(%a) %H:%M") %></p>
-      <p class="notification-message">あなたの投稿が<%= link_to user.name, user_path(user) %>さんにお気に入り登録されました。</p>
+      <p class="notification-message">あなたの投稿が<%= link_to user.name, user_path(user) %>さんに気になる登録されました。</p>
     <% elsif notification.variety == 2 %>
       <p><%= notification.created_at.strftime("%Y/%m/%d(%a) %H:%M") %></p>
       <p class="notification-message">あなたの投稿に<%= link_to user.name, user_path(user) %>さんがコメントしました。
