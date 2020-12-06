@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get    :favorites, to: 'favorites#index'
   post   "favorites/:live_companion_id/create"  => "favorites#create"
   delete "favorites/:live_companion_id/destroy" => "favorites#destroy"
-  post '/static_pages/guest_sign_in', to: 'top#new_guest'
+  post '/static_pages/guest_sign_in', to: 'static_pages#new_guest'
 end
