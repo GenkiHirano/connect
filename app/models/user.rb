@@ -36,6 +36,13 @@ class User < ApplicationRecord
     LiveCompanion.where("user_id = ?", id)
   end
 
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    LiveCompanion.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
