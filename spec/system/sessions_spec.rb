@@ -3,11 +3,34 @@ require 'rails_helper'
 RSpec.describe "Sessions", type: :system do
   let!(:user) { create(:user) }
 
-  before do
-    visit login_path
+  describe "ゲストログイン機能(topページ)" do
+    before do
+      visit root_path
+    end
+
+    context "ページレイアウト" do
+      it "ゲストログインのリンクがあることを確認" do
+        expect(page).to have_link 'ゲストログイン（閲覧用）', href: static_pages_guest_sign_in_path
+      end
+    end
+
+    context "ログイン処理" do
+      it "ゲストログイン機能が正常に動作することを確認" do
+        click_link "ゲストログイン（閲覧用）"
+        expect(page).to have_content "music_snsへようこそ！ゲストユーザーとしてログインしました。"
+        expect(page).to have_link 'Home', href: root_path
+        expect(page).to have_link 'music_snsとは？', href: about_path
+        expect(page).to have_link 'ユーザー一覧', href: users_path
+        expect(page).to have_link 'ログアウト', href: logout_path
+      end
+    end
   end
 
-  describe "ログインページ" do
+  describe "ログイン機能(ログインページ)" do
+    before do
+      visit login_path
+    end
+
     context "ページレイアウト" do
       it "「ログイン」の文字列が存在することを確認" do
         expect(page).to have_content 'ログイン'
@@ -47,7 +70,6 @@ RSpec.describe "Sessions", type: :system do
         fill_in "user_password", with: "pass"
         click_button "ログイン"
         expect(page).to have_content 'メールアドレスとパスワードの組み合わせが誤っています'
-
         visit root_path
         expect(page).not_to have_content "メールアドレスとパスワードの組み合わせが誤っています"
       end
@@ -57,16 +79,13 @@ RSpec.describe "Sessions", type: :system do
         expect(page).to have_link 'music_snsとは？', href: about_path
         expect(page).to have_link 'ユーザー登録(無料)', href: signup_path
         expect(page).to have_link 'ログイン', href: login_path
-
         fill_in "user_email", with: user.email
         fill_in "user_password", with: user.password
         click_button "ログイン"
-
         expect(page).to have_link 'Home', href: root_path
         expect(page).to have_link 'music_snsとは？', href: about_path
         expect(page).to have_link 'ユーザー一覧', href: users_path
         expect(page).to have_link 'プロフィール', href: user_path(user)
-        expect(page).to have_link 'プロフィール編集', href: edit_user_path(user)
         expect(page).to have_link 'ログアウト', href: logout_path
       end
     end
