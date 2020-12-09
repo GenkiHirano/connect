@@ -24,6 +24,7 @@ RSpec.describe "ライブ同行者を募集する(投稿)", type: :request do
           live_companion: { artist_name: "米津玄師",
                             live_name: "米津玄師 2020 TOUR / HYPE",
                             schedule: "2030-8-6",
+                            live_venue: "埼玉スーパーアリーナ",
                             live_memo: "誰か、米津玄師さんの一緒にライブ行きませんか...？",
                             picture: picture }
         }
@@ -38,6 +39,7 @@ RSpec.describe "ライブ同行者を募集する(投稿)", type: :request do
           live_companion: { artist_name: "",
                             live_name: "米津玄師 2020 TOUR / HYPE",
                             schedule: "2030-8-6",
+                            live_venue: "埼玉スーパーアリーナ",
                             live_memo: "誰か、米津玄師さんの一緒にライブ行きませんか...？",
                             picture: picture }
         }
