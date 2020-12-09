@@ -27,6 +27,7 @@ ja:
         live_name: ライブ名
         picture: 投稿の写真
         schedule: 日程
+        live_venue: 会場
         live_memo: ライブメモ
       comment:
         user_id: コメント投稿者のID
