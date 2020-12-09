@@ -10,6 +10,7 @@
         <p><%= link_to @live_companion.artist_name, live_companion_path(@live_companion) %></p>
         <p><%= @live_companion.live_name %></p>
         <p><%= @live_companion.schedule %></p>
+        <p><%= @live_companion.live_venue %></p>
         <p><%= @live_companion.live_memo %></p>
       </div>
       <p class="live_companion-user">投稿者 <%= link_to user.name, user_path(user) %></p>

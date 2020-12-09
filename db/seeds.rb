@@ -18,6 +18,8 @@ end
   LiveCompanion.create!(
     artist_name: "米津玄師",
     live_name: "米津玄師 2020 TOUR / HYPE",
+    schedule: "2030-8-6",
+    live_venue: "埼玉スーパーアリーナ",
     live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
     user_id: 1
   )
