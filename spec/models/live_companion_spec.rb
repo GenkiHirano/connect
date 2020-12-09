@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe LiveCompanion, type: :model do
-  let!(:live_yesterday) { create(:live_companion, :yesterday) }
-  let!(:live_one_week_ago) { create(:live_companion, :one_week_ago) }
-  let!(:live_one_month_ago) { create(:live_companion, :one_month_ago) }
   let!(:live_companion) { create(:live_companion) }
 
   context "バリデーション" do

@@ -16,6 +16,7 @@ RSpec.describe "投稿編集", type: :request do
         artist_name: "米津玄師",
         live_name: "米津玄師 2020 TOUR / HYPE",
         schedule: "2030-8-6",
+        live_venue: "埼玉スーパーアリーナ",
         live_memo: "誰か、米津玄師さんの一緒にライブ行きませんか...？",
         picture: picture2
       } }
@@ -34,6 +35,7 @@ RSpec.describe "投稿編集", type: :request do
         artist_name: "米津玄師",
         live_name: "米津玄師 2020 TOUR / HYPE",
         schedule: "2030-8-6",
+        live_venue: "埼玉スーパーアリーナ",
         live_memo: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
       } }
       expect(response).to have_http_status "302"
@@ -51,6 +53,7 @@ RSpec.describe "投稿編集", type: :request do
         artist_name: "米津玄師",
         live_name: "米津玄師 2020 TOUR / HYPE",
         schedule: "2030-8-6",
+        live_venue: "埼玉スーパーアリーナ",
         live_memo: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
       } }
       expect(response).to have_http_status "302"
