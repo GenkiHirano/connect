@@ -25,6 +25,7 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content 'アーティスト名'
         expect(page).to have_content 'ライブ名'
         expect(page).to have_content '日程'
+        expect(page).to have_content '会場'
         expect(page).to have_content 'ライブメモ'
       end
     end
@@ -34,6 +35,7 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: "米津玄師"
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[schedule]",    with: "2030-8-6"
+        fill_in "live_companion[live_venue]",   with: "埼玉スーパーアリーナ"
         fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion.jpg"
         click_button "登録する"
@@ -44,6 +46,7 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: "米津玄師"
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[schedule]",    with: "2030-8-6"
+        fill_in "live_companion[live_venue]",   with: "埼玉スーパーアリーナ"
         fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_link(href: live_companion_path(LiveCompanion.first))
@@ -53,6 +56,7 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: ""
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[schedule]",    with: "2030-8-6"
+        fill_in "live_companion[live_venue]",   with: "埼玉スーパーアリーナ"
         fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_content "アーティスト名を入力してください"
@@ -75,6 +79,7 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content live_companion.artist_name
         expect(page).to have_content live_companion.live_name
         expect(page).to have_content live_companion.schedule
+        expect(page).to have_content live_companion.live_venue
         expect(page).to have_content live_companion.live_memo
         expect(page).to have_link nil, href: live_companion_path(live_companion), class: 'live_companion-picture'
       end
@@ -135,7 +140,8 @@ RSpec.describe "LiveCompanions", type: :system do
       it "入力部分に適切なラベルが表示されること" do
         expect(page).to have_content 'アーティスト名'
         expect(page).to have_content 'ライブ名'
-        expect(page).to have_content '日程'      
+        expect(page).to have_content '日程'
+        expect(page).to have_content '会場'
         expect(page).to have_content 'ライブメモ'
       end
 
@@ -152,12 +158,14 @@ RSpec.describe "LiveCompanions", type: :system do
       it "有効な更新" do
         fill_in "live_companion[artist_name]", with: "編集：米津玄師"
         fill_in "live_companion[live_name]",   with: "編集：米津玄師 2020 TOUR / HYPE"
+        fill_in "live_companion[live_venue]",   with: "編集：埼玉スーパーアリーナ"
         fill_in "live_companion[live_memo]",   with: "編集：誰か、米津玄師さんのライブ一緒に行きませんか...？"
         attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion2.jpg"
         click_button "更新する"
         expect(page).to have_content "ライブ情報が更新されました！"
         expect(live_companion.reload.artist_name).to eq "編集：米津玄師"
         expect(live_companion.reload.live_name).to eq "編集：米津玄師 2020 TOUR / HYPE"
+        expect(live_companion.reload.live_venue).to eq "編集：埼玉スーパーアリーナ"
         expect(live_companion.reload.live_memo).to eq "編集：誰か、米津玄師さんのライブ一緒に行きませんか...？"
         expect(live_companion.reload.picture.url).to include "test_live_companion2.jpg"
       end
