@@ -18,6 +18,10 @@
           <%= f.text_field :live_name, class: 'form-control', id: 'live_name' %>
         </div>
         <div class = 'form-group'>
+          <%= f.label :schedule %>　<span class="input-need">※必須</span>
+          <%= f.date_field :schedule, class: 'form-control', id: 'schedule' %>
+        </div>
+        <div class = 'form-group'>
           <%= f.label :live_memo %> 　<span class="input-unneed">※任意</span>
           <%= f.text_field :live_memo, class: 'form-control', id: 'live_memo' %>
         </div>

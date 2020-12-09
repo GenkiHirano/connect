@@ -11,6 +11,7 @@
       <span class="artist_name"><%= link_to live_companion.artist_name, live_companion_path(live_companion) %></span><br>
       <span class="live_name"><%= live_companion.live_name %></span>
       <span class="live_memo"><%= live_companion.live_memo %></span><br>
+      <span class="schedule"><%= live_companion.schedule %></span>
       <%= link_to gravatar_for(live_companion.user, size: 50), live_companion.user %>
       <%= link_to live_companion.user.name, live_companion.user %>
       <span class="timestamp">
