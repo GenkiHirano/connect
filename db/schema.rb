@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_132304) do
     t.string "artist_name"
     t.string "live_name"
     t.date "schedule"
+    t.string "live_venue"
     t.text "live_memo"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
