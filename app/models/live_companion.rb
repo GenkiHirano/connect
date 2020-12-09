@@ -8,6 +8,7 @@ class LiveCompanion < ApplicationRecord
   validates :artist_name, presence: true, length: { maximum: 30 }
   validates :live_name, presence: true, length: { maximum: 30 }
   validates :schedule, presence: true
+  validate  :date_not_before_today
   validates :live_memo, length: { maximum: 140 }
 
   def feed_comment(live_companion_id)
@@ -20,5 +21,9 @@ class LiveCompanion < ApplicationRecord
       if picture.size > 5.megabytes
         errors.add(:picture, "：5MBより大きい画像はアップロードできません。")
       end
+    end
+
+    def date_not_before_today
+      errors.add(:schedule, "は今日以降のものを選択してください") if schedule.nil? || schedule < Date.today
     end
 end
