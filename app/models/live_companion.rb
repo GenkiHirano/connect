@@ -7,6 +7,7 @@ class LiveCompanion < ApplicationRecord
   validates :user_id, presence: true
   validates :artist_name, presence: true, length: { maximum: 30 }
   validates :live_name, presence: true, length: { maximum: 30 }
+  validates :schedule, presence: true
   validates :live_memo, length: { maximum: 140 }
 
   def feed_comment(live_companion_id)
