@@ -29,6 +29,12 @@ RSpec.describe LiveCompanion, type: :model do
       expect(live_companion.errors[:schedule]).to include("を入力してください")
     end
 
+    it "会場がなければ無効な状態であること" do
+      live_companion = build(:live_companion, live_venue: nil)
+      live_companion.valid?
+      expect(live_companion.errors[:live_venue]).to include("を入力してください")
+    end
+
     it "アーティスト名が30文字以内であること" do
       live_companion = build(:live_companion, artist_name: "あ" * 31)
       live_companion.valid?
