@@ -4,6 +4,7 @@ class CreateLiveCompanions < ActiveRecord::Migration[6.0]
       t.string :artist_name
       t.string :live_name
       t.date :schedule
+      t.string :live_venue
       t.text :live_memo
       t.references :user, foreign_key: true
 
