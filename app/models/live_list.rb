@@ -1,0 +1,2 @@
+class LiveList < ApplicationRecord
+end
