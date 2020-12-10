@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   post   "/static_pages/guest_sign_in", to: "static_pages#new_guest"
   get    :live_lists, to: 'live_lists#index'
   post   "live_lists/:live_companion_id/create" => "live_lists#create"
-  delete "live_lists/:live_lists_id/destroy"    => "live_lists#destroy"
+  delete "live_lists/:live_list_id/destroy"    => "live_lists#destroy"
 end

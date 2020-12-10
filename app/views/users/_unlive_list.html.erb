@@ -1,9 +1,7 @@
 <% live_list = LiveList.find_by(live_companion_id: @live_companion.id) %>
 <%= link_to "/live_lists/#{live_list.id}/destroy",
             method: :delete,
-            class: 'unlive_lists',
+            class: 'unlive_list',
             remote: true do %>
-  <% if !current_user == !@live_companion.user %>
-    <div class="live_list-btn-unlist"><i class="fas fa-utensils"></i> 一緒に行きたい！リクエスト済み</div>
-  <% end %>
+<div class="live_list-btn-unlist"><i class="fas fa-utensils"></i> 一緒に行きたい！リクエスト済み</div>
 <% end %>
