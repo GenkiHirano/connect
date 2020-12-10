@@ -2,6 +2,7 @@ class LiveListsController < ApplicationController
   before_action :logged_in_user
 
   def index
+    @live_lists = current_user.live_lists
   end
 
   def create
