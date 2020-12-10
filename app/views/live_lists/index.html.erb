@@ -1,2 +1,12 @@
-<h1>LiveLists#index</h1>
-<p>Find me in app/views/live_lists/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>　ライブ予定リスト (<%= @live_lists.count %>)</h3>
+    </div>
+  </div>
+  <% if @live_lists.present? %>
+    <ol class="live_lists">
+      <%= render @live_lists %>
+    </ol>
+  <% end %>
+</div>
