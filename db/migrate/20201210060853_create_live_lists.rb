@@ -7,5 +7,6 @@ class CreateLiveLists < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :live_lists, :user_id
   end
 end
