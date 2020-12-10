@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'live_lists/index'
   root 'static_pages#top'
   resources :live_companions
   resources :relationships, only: [:create, :destroy]
