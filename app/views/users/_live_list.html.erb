@@ -1,0 +1,8 @@
+<%= link_to "/live_lists/#{@live_companion.id}/create",
+            method: :post,
+            class: 'live_lists',
+            remote: true do %>
+  <% if !current_user == @live_companion.user %>
+    <div class="live_list-btn-list"><i class="fas fa-utensils"></i> 一緒に行きたい！リクエストを送る</div>
+  <% end %>
+<% end %>

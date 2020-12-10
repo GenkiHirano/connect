@@ -1,0 +1,7 @@
+<div id="live_list-<%= @live_companion.id %>" class="live_list-button">
+  <% if !current_user.nil? && current_user.live_list?(@live_companion) %>
+    <%= render 'users/unlive_list' %>
+  <% else %>
+    <%= render 'users/live_list' %>
+  <% end %>
+</div>
