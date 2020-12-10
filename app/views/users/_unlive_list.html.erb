@@ -3,7 +3,7 @@
             method: :delete,
             class: 'unlive_lists',
             remote: true do %>
-  <% if !current_user == @live_companion.user %>
+  <% if !current_user == !@live_companion.user %>
     <div class="live_list-btn-unlist"><i class="fas fa-utensils"></i> 一緒に行きたい！リクエスト済み</div>
   <% end %>
 <% end %>
