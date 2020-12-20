@@ -7,6 +7,12 @@
       <span class="picture">
         <%= link_to((image_tag @live_companion.picture.thumb400.url), live_companion_path(@live_companion.id), class: 'live_companion-picture') if @live_companion.picture.url.present? %>
       </span>
+      <% if current_user == @live_companion.user %>
+        <p>あなたが募集している投稿です。</p>
+      <% else %>
+        <%= render 'users/favorite_form' %>
+        <%= render 'users/live_list_form' %>
+      <% end %>
     </div>
       <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
       <div class="change-live_companion">
