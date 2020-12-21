@@ -52,12 +52,12 @@ RSpec.describe "StaticPages", type: :system do
       visit about_path
     end
 
-    it "「music_sns」とは？の文字列が存在することを確認" do
-      expect(page).to have_content 'music_snsとは？'
+    it "「connect」とは？の文字列が存在することを確認" do
+      expect(page).to have_content 'connectとは？'
     end
 
     it "正しいタイトルが表示されることを確認" do
-      expect(page).to have_title full_title('music_snsとは？')
+      expect(page).to have_title full_title('connectとは？')
     end
   end
 end
