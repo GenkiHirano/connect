@@ -3,5 +3,9 @@
             method: :delete,
             class: 'unlive_list',
             remote: true do %>
-<div class="live_list-btn-unlist"><i class="fas fa-list-alt"></i> 一緒に行きたい！リクエスト済み</div>
+  <% if current_user == @live_companion.user %>
+    <div class="live_list-btn-unlist"><i class="fas fa-list-alt"></i> ライブ予定リストに追加済み</div>
+  <% else %>
+    <div class="live_list-btn-unlist"><i class="fas fa-list-alt"></i> 一緒に行きたい！リクエスト済み</div>
+  <% end %>
 <% end %>
