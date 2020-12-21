@@ -6,8 +6,8 @@ RSpec.describe "StaticPages", type: :system do
       visit root_path
     end
 
-    it "「music_sns」の文字列が存在することを確認" do
-      expect(page).to have_content 'music_sns'
+    it "「connect」の文字列が存在することを確認" do
+      expect(page).to have_content 'connect'
     end
 
     it "正しいタイトルが表示されることを確認" do
