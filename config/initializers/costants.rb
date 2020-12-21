@@ -1,3 +1,3 @@
 class Const
-  BASE_TITLE = "music_sns".freeze
+  BASE_TITLE = "connect".freeze
 end

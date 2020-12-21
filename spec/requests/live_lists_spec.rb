@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "ライブ予定リスト登録機能", type: :request do
   let(:user) { create(:user) }
-  let(:other_user) { create(:user) } 
-  let(:live_companion) { create(:live_companion, user: other_user) } 
+  let(:other_user) { create(:user) }
+  let(:live_companion) { create(:live_companion, user: other_user) }
 
   context "ライブ予定リスト一覧ページの表示" do
     context "ログインしている場合" do
