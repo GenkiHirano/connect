@@ -400,5 +400,5 @@ RSpec.describe "Users", type: :system do
       visit live_lists_path
       expect(page).not_to have_css ".live_list-live_companion"
     end
-  end  
+  end
 end

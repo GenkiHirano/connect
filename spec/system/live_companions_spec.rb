@@ -35,7 +35,7 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: "米津玄師"
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[schedule]",    with: "2030-8-6"
-        fill_in "live_companion[live_venue]",   with: "埼玉スーパーアリーナ"
+        fill_in "live_companion[live_venue]", with: "埼玉スーパーアリーナ"
         fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion.jpg"
         click_button "登録する"
@@ -46,8 +46,8 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: "米津玄師"
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[schedule]",    with: "2030-8-6"
-        fill_in "live_companion[live_venue]",   with: "埼玉スーパーアリーナ"
-        fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        fill_in "live_companion[live_venue]", with: "埼玉スーパーアリーナ"
+        fill_in "live_companion[live_memo]", with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_link(href: live_companion_path(LiveCompanion.first))
       end
@@ -56,8 +56,8 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: ""
         fill_in "live_companion[live_name]",   with: "米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[schedule]",    with: "2030-8-6"
-        fill_in "live_companion[live_venue]",   with: "埼玉スーパーアリーナ"
-        fill_in "live_companion[live_memo]",   with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
+        fill_in "live_companion[live_venue]", with: "埼玉スーパーアリーナ"
+        fill_in "live_companion[live_memo]", with: "誰か、米津玄師さんの一緒にライブ行きませんか...？"
         click_button "登録する"
         expect(page).to have_content "アーティスト名を入力してください"
       end
@@ -158,7 +158,7 @@ RSpec.describe "LiveCompanions", type: :system do
       it "有効な更新" do
         fill_in "live_companion[artist_name]", with: "編集：米津玄師"
         fill_in "live_companion[live_name]",   with: "編集：米津玄師 2020 TOUR / HYPE"
-        fill_in "live_companion[live_venue]",   with: "編集：埼玉スーパーアリーナ"
+        fill_in "live_companion[live_venue]", with: "編集：埼玉スーパーアリーナ"
         fill_in "live_companion[live_memo]",   with: "編集：誰か、米津玄師さんのライブ一緒に行きませんか...？"
         attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion2.jpg"
         click_button "更新する"
