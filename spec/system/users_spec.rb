@@ -324,4 +324,90 @@ RSpec.describe "Users", type: :system do
       end
     end
   end
+
+  context "リスト登録/解除" do
+    before do
+      login_for_system(user)
+    end
+
+    it "投稿のライブ予定リスト登録/解除ができること" do
+      expect(user.live_list?(live_companion)).to be_falsey
+      user.live_list(live_companion)
+      expect(user.live_list?(live_companion)).to be_truthy
+      user.unlive_list(LiveCompanion.first)
+      expect(user.live_list?(live_companion)).to be_falsey
+    end
+
+    it "投稿のライブ予定リスト登録ができること" do
+      user.live_list(live_companion)
+      expect(user.live_list?(live_companion)).to be_truthy
+    end
+
+    it "投稿のライブ予定リスト解除ができること" do
+      user.unlive_list(live_companion)
+      expect(user.live_list?(live_companion)).to be_falsey
+    end
+
+
+    it "トップページからライブ予定リストの登録ができること", js: true do
+      visit root_path
+      link = find('.live_list')
+      expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
+    end
+
+    it "トップページからライブ予定リストの解除ができること", js: true do
+      visit root_path
+      link = find('.unlive_list', visible: false)
+      expect(link[:href]).to include "/live_lists/#{LiveCompanion.first.id}/destroy"
+    end
+
+    it "ユーザー個別ページからライブ予定リストの登録ができること", js: true do
+      visit user_path(user)
+      link = find('.live_list')
+      expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
+      link.click
+      link = find('.unlive_list')
+      expect(link[:href]).to include "/live_lists/#{LiveCompanion.first.id}/destroy"
+      link.click
+      link = find('.live_list')
+      expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
+    end
+
+    it "投稿個別ページからライブ予定リスト登録/解除ができること", js: true do
+      link = find('.live_list')
+      expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
+      link.click
+      link = find('.unlive_list')
+      expect(link[:href]).to include "/live_lists/#{LiveCompanion.first.id}/destroy"
+      link.click
+      link = find('.live_list')
+      expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
+    end
+
+    it "ライブ予定リスト一覧ページが期待通り表示され、ライブ予定リストから削除することもできること" do
+      visit lists_path
+      expect(page).not_to have_css ".live_list-live_companion"
+      user.live_list(live_companion)
+      live_companion_2 = create(:live_companion, user: user)
+      other_user.list(live_companion_2)
+      visit lists_path
+      expect(page).to have_css ".live_list-live_companion", count: 2
+      expect(page).to have_content live_companion.name
+      expect(page).to have_content live_companion.live_memo
+      expect(page).to have_content LiveCompanion.last.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+      expect(page).to have_content "この投稿をライブ予定リストに追加しました。"
+      expect(page).to have_content live_companion_2.name
+      expect(page).to have_content live_companion_2.live_memo
+      expect(page).to have_content LiveCompanion.first.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+      expect(page).to have_content "#{other_user.name}さんがこの投稿に一緒に行きたい！リクエストをしました。"
+      expect(page).to have_link other_user.name, href: user_path(other_user)
+      user.unlive_list(LiveCompanion.first)
+      visit lists_path
+      expect(page).to have_css ".live_list-live_companion", count: 1
+      expect(page).to have_content live_companion.name
+      find('.unlive_list').click
+      visit lists_path
+      expect(page).not_to have_css ".live_list-live_companion"
+    end
+  end  
 end

@@ -2,12 +2,12 @@
 <% @live_companion = LiveCompanion.find(live_list.live_companion_id) %>
 <% user = User.find(live_list.from_user_id) %>
 <li id="live_list-<%= @live_companion.id %>">
-  <div class="live_list-dish">
+  <div class="live_list-live_companion">
     <p><%= live_list.created_at.strftime("%Y/%m/%d(%a) %H:%M") %> </p>
     <% if live_list.user_id == live_list.from_user_id %>
-      <p class="list-message">この投稿をライブ予定リストに追加しました。</p>
+      <p class="live_list-message">この投稿をライブ予定リストに追加しました。</p>
     <% else %>
-      <p class="list-message"><%= link_to user.name, user_path(user) %>さんがこのライブに一緒に行きたい！リクエストをしました。</p>
+      <p class="live_list-message"><%= link_to user.name, user_path(user) %>さんがこのライブに一緒に行きたい！リクエストをしました。</p>
     <% end %>
   </div>
   <div class="row">
@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-7">
       <p><%= link_to @live_companion.artist_name, live_companion_path(@live_companion) %></p>
-      <p class="list-dish-description"><%= @live_companion.live_memo %></p>
+      <p class="live_list-live_companion-live_memo"><%= @live_companion.live_memo %></p>
     </div>
     <div class="col-md-3">
       <%= link_to "リストから削除", "/live_lists/#{live_list.id}/destroy",
