@@ -4,6 +4,15 @@
   box-sizing:         border-box;
 }
 
+.menu-1 a:hover {
+  text-decoration: none;
+  text-decoration-width: 1px;
+}
+
+.fh5co-nav .top-menu {
+  padding: 18px 0;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -13,6 +22,15 @@
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+}
+
+.fh5co-nav #fh5co -logo {
+  font-size: 0px;
 }
 
 #logo:hover {
@@ -293,21 +311,6 @@ a.live_list, a.unlive_list {
   margin-bottom: 20px;
 }
 
-.menu-1 a:hover {
-  text-decoration: none;
-  text-decoration-width: 1px;
-}
-
-.fh5co-nav .top-menu {
-  padding: 18px 0;
-}
- #logo  {
-  img {
-    max-width: 100%;
-    height: auto;
-    box-sizing: border-box;
-  }
-}
 
 .fh5co-nav #fh5co -logo {
   font-size: 0px;
