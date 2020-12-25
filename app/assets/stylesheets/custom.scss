@@ -4,10 +4,6 @@
   box-sizing:         border-box;
 }
 
-body {
-  background-image : url("app/assets/images/top-page.jpg");
-}
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -295,4 +291,24 @@ a.live_list, a.unlive_list {
 
 .list-live_companion-live_memo {
   margin-bottom: 20px;
+}
+
+.menu-1 a:hover {
+  text-decoration: none;
+  text-decoration-width: 1px;
+}
+
+.fh5co-nav .top-menu {
+  padding: 18px 0;
+}
+ #logo  {
+  img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+}
+
+.fh5co-nav #fh5co -logo {
+  font-size: 0px;
 }
