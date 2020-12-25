@@ -14,14 +14,6 @@
 }
 
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
   img {
     max-width: 100%;
     height: auto;
@@ -314,4 +306,10 @@ a.live_list, a.unlive_list {
 
 .fh5co-nav #fh5co -logo {
   font-size: 0px;
+}
+
+#fh5co-footer {
+  margin-top: 3em;
+  padding: 1em 0;
+  border-top: 1px solid #eaeaea ;
 }
