@@ -4,6 +4,10 @@
   box-sizing:         border-box;
 }
 
+body {
+  background-image : url("app/assets/images/top-page.jpg");
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -24,41 +28,40 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  @include box_sizing;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 input {
   height: auto !important;
 }
- #error_explanation {
+
+#error_explanation {
   color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
+#error_explanation ul {
+  color: red;
+  margin: 0 0 30px 0;
 }
 
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
- }
-  #session_remember_me {
+}
+
+.checkbox span {
+  margin-left: 20px;
+  font-weight: normal;
+}
+
+#session_remember_me {
   width: auto;
   margin-left: 0;
- }
+}
 
- .title-profile {
+.title-profile {
   padding-bottom: 10px;
   border-bottom: 1px solid #eaeaea;
 }
@@ -85,55 +88,59 @@ input {
 .users {
   list-style: none;
   margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
- }
-
- .live_companions {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
- }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .live_memo {
-    display: block;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
+.users li {
+  overflow: auto;
+  padding: 10px 0;
+}
+
+.live_companions {
+  list-style: none;
+  padding: 0;
+}
+
+.live_companions li {
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.live_companions .user {
+  margin-top: 5em;
+  padding-top: 0;
+}
+
+.live_companions .live_memo {
+  display: block;
+}
+
+.live_companions .live_memo img {
+  display: block;
+  padding: 5px 0;
+}
+
+.live_companions .timestamp {
+  display: block;
+  margin-left: 60px;
+}
+
+.live_companions .gravatar {
+  float: left;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+aside textarea {
+  height: 100px;
+  margin-bottom: 5px;
 }
 
 span.picture {
   margin-top: 10px;
-  input {
-    border: 0;
-  }
+}
+
+span.picture input {
+  border: 0;
 }
 
 .btn-record {
@@ -160,19 +167,14 @@ h2.artist_name {
   display: inline-block;
 }
 
-.live_name {
-  h4 {
-    font-size: 20px;
-    display: inline-block;
-    
-  }
+.live_name h4 {
+  font-size: 20px;
+  display: inline-block;
 }
 
-.live_memo {
-  h4 {
-    font-size: 20px;
-    display: inline-block;
-  }
+.live_memo h4 {
+  font-size: 20px;
+  display: inline-block;
 }
 
 .other-info {
@@ -195,6 +197,7 @@ h2.artist_name {
 .like-btn-unlike {
   color: red;
 }
+
 .like-btn-like {
   color: grey;
 }
@@ -205,10 +208,11 @@ a.like, a.unlike {
 
 .favorites {
   list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
+}
+
+.favorites li {
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
 }
 
 .title-comment {
@@ -218,14 +222,16 @@ a.like, a.unlike {
 
 .comments {
   list-style: none;
-  li {
-    font-size: 14px;
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-    .comment {
-      font-size: 16px;
-    }
-  }
+}
+
+.comments li {
+  font-size: 14px;
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.comments li .comment {
+  font-size: 16px;
 }
 
 .comment-create-at {
@@ -238,14 +244,16 @@ li.new_notification > a > span {
 
 .notifications {
   list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8 ;
-  }
-  .gravatar {
-    margin-right: 10px;
-    margin-top: -5px;
-  }
+}
+
+.notifications li {
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.notifications .gravatar {
+  margin-right: 10px;
+  margin-top: -5px;
 }
 
 .notification-message {
@@ -274,10 +282,11 @@ a.live_list, a.unlive_list {
 
 .live_lists {
   list-style: none;
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8 ;
-  }
+}
+
+.live_lists li {
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
 }
 
 .live_list-message {

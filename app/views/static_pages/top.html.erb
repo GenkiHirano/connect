@@ -1,6 +1,6 @@
 <% if logged_in? %>
-  <div class="container">
-    <div class="row">
+  <div id="fh5co-portfolio">
+    <div class="container">
       <div class="col-md-9">
         <h3>一緒にライブに行く人を見つけよう！ (<%= @feed_items.count %>)</h3>
         <%= render 'shared/feed' %>
@@ -11,11 +11,24 @@
     </div>
   </div>
 <% else %>
-  <center>
-    <h1>connect へようこそ！</h1>
-    <h2>ライブに一緒に行く人を見つけよう！</h2>
-    <p>ライブを最高の時間に。</p>
-    <%= link_to 'ゲストログイン（閲覧用）', static_pages_guest_sign_in_path, method: :post %>
-  </center>
+  <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <div class="display-t js-fullheight">
+            <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+              <h2>ライブに一緒に行く人を見つけよう！</h2>
+              <h3>ライブを最高の時間に。</h3>
+              <p>
+                <%= link_to 'connectを始める', signup_path, class: "btn btn-primary btn-lg btn-demo" %>
+              </p>
+              <p><%= link_to 'ゲストログイン（閲覧用）', static_pages_guest_sign_in_path, method: :post %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 <% end %>
 
