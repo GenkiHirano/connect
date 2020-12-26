@@ -1,38 +1,40 @@
-<% provide(:title, "同行ライブ情報の編集") %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= form_for(@live_companion) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <span class="picture">
-          <%= f.label :picture %>　<span class="input-unneed">※任意</span>
-          <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'live_companion-picture' %>
-          <%= image_tag(@live_companion.picture.thumb400.url) if @live_companion.picture.url.present? %>
-        </span>
-        <div class = 'form-group'>
-          <%= f.label :artist_name %>　<span class="input-need">※必須</span>
-          <%= f.text_field :artist_name, class: 'form-control', id: 'artist_name' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :live_name %>　<span class="input-need">※必須</span>
-          <%= f.text_field :live_name, class: 'form-control', id: 'live_name' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :schedule %>　<span class="input-need">※必須</span>
-          <%= f.date_field :schedule, class: 'form-control', id: 'schedule' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :live_venue %>　<span class="input-need">※必須</span>
-          <%= f.text_field :live_venue, class: 'form-control', id: 'live_venue' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :live_memo %> 　<span class="input-unneed">※任意</span>
-          <%= f.text_field :live_memo, class: 'form-control', id: 'live_memo' %>
-        </div>
-        <%= f.submit "更新する", class: "btn btn-primary" %>
-        <%= link_to "投稿を削除する", live_companion_path(@live_companion), method: :delete,
-                             data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
-      <% end %>
+<% provide(:title, "投稿の編集") %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= form_for(@live_companion) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <span class="picture">
+            <%= f.label :picture %>　<span class="input-unneed">※任意</span>
+            <%= f.file_field :picture, accept: 'image/jpeg,image/png', class: 'form-control', id: 'live_companion-picture' %>
+            <%= image_tag(@live_companion.picture.thumb400.url) if @live_companion.picture.url.present? %>
+          </span>
+          <div class = 'form-group'>
+            <%= f.label :artist_name %>　<span class="input-need">※必須</span>
+            <%= f.text_field :artist_name, class: 'form-control', id: 'artist_name' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :live_name %>　<span class="input-need">※必須</span>
+            <%= f.text_field :live_name, class: 'form-control', id: 'live_name' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :schedule %>　<span class="input-need">※必須</span>
+            <%= f.date_field :schedule, class: 'form-control', id: 'schedule' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :live_venue %>　<span class="input-need">※必須</span>
+            <%= f.text_field :live_venue, class: 'form-control', id: 'live_venue' %>
+          </div>
+          <div class = 'form-group'>
+            <%= f.label :live_memo %> 　<span class="input-unneed">※任意</span>
+            <%= f.text_field :live_memo, class: 'form-control', id: 'live_memo' %>
+          </div>
+          <%= f.submit "更新する", class: "btn btn-primary" %>
+          <%= link_to "投稿を削除する", live_companion_path(@live_companion), method: :delete,
+                              data: { confirm: "本当にこの投稿を削除してよろしいですか？" } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
