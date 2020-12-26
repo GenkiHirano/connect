@@ -1,33 +1,36 @@
 <% provide(:title, "#{@live_companion.artist_name}") %>
 <% @comments  = @live_companion.feed_comment(@live_companion.id) %>
-<div class="container">
-  <div class="row">
-    <div class="other-info">
-    <div class="col-md-4">
-      <span class="picture">
-        <%= link_to((image_tag @live_companion.picture.thumb400.url), live_companion_path(@live_companion.id), class: 'live_companion-picture') if @live_companion.picture.url.present? %>
-      </span>
-      <%= render 'users/favorite_form' %>
-      <%= render 'users/live_list_form' %>
-    </div>
-      <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
-      <div class="change-live_companion">
-        <% if current_user == @live_companion.user %>
-          <%= link_to "編集", edit_live_companion_path(@live_companion), class: 'edit-live_companion' %>　
-        <% end %>
-        <% if current_user.admin? || (current_user == @live_companion.user) %>
-          <%= link_to "削除", live_companion_path(@live_companion), method: :delete, class: 'delete-live_companion',
-                                      data: { confirm: "本当に削除しますか？" } %>
-        <% end %>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <span class="picture">
+          <%= link_to((image_tag @live_companion.picture.thumb400.url), live_companion_path(@live_companion.id), class: 'live_companion-picture') if @live_companion.picture.url.present? %>
+        </span>
+        <%= render 'users/favorite_form' %>
+        <%= render 'users/live_list_form' %>
       </div>
-      <h4 class="live_name"><%= @live_companion.live_name %></h4>
-      <h4 class="schedule"><%= @live_companion.schedule %></h4>
-      <h4 class="live_memo"><%= @live_companion.live_venue %></h4>
-      <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
-      <div class="comment">
-        <%= render "comments/feed_comments" %>
-        <%= render "comments/new" %>
+      <div class="col-md-8">
+        <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
+        <div class="change-live_companion">
+          <% if current_user == @live_companion.user %>
+            <%= link_to "編集", edit_live_companion_path(@live_companion), class: 'edit-live_companion' %>　
+          <% end %>
+          <% if current_user.admin? || (current_user == @live_companion.user) %>
+          <%= link_to "削除", live_companion_path(@live_companion), method: :delete, class: 'delete-live_companion',
+                                          data: { confirm: "本当に削除しますか？" } %>
+          <% end %>
+        </div>
+        <h4 class="live_name"><%= @live_companion.live_name %></h4>
+        <h4 class="schedule"><%= @live_companion.schedule %></h4>
+        <h4 class="live_memo"><%= @live_companion.live_venue %></h4>
+        <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
+        <div class="comment">
+          <%= render "comments/feed_comments" %>
+          <%= render "comments/new" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
