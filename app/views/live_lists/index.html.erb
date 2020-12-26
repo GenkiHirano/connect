@@ -1,13 +1,15 @@
 <% provide(:title, "ライブ予定一覧") %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h3>　ライブ予定リスト (<%= @live_lists.count %>)</h3>
+<div id="fh5co-portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>　ライブ予定リスト (<%= @live_lists.count %>)</h3>
+      </div>
     </div>
+    <% if @live_lists.present? %>
+      <ol class="live_lists">
+        <%= render @live_lists %>
+      </ol>
+    <% end %>
   </div>
-  <% if @live_lists.present? %>
-    <ol class="live_lists">
-      <%= render @live_lists %>
-    </ol>
-  <% end %>
 </div>
