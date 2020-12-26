@@ -134,7 +134,7 @@ RSpec.describe "LiveCompanions", type: :system do
 
     context "ページレイアウト" do
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('同行ライブ情報の編集')
+        expect(page).to have_title full_title('投稿の編集')
       end
 
       it "入力部分に適切なラベルが表示されること" do
