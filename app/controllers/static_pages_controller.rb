@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
       user.password = SecureRandom.urlsafe_base64
     end
     log_in user
-    flash[:success] = "music_snsへようこそ！ゲストユーザーとしてログインしました。"
+    flash[:success] = "connectへようこそ！ゲストユーザーとしてログインしました。"
     redirect_to root_path
   end
 end

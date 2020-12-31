@@ -24,15 +24,6 @@ $main-yellow: #fee856;
   }
 }
 
-.fh5co-nav #fh5co -logo {
-  font-size: 0px;
-}
-
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
 @media screen and (max-width: 768px) {
   #logo  {
     img {
@@ -45,6 +36,10 @@ $main-yellow: #fee856;
 
 .fh5co-nav-toggle {
   position: fixed;
+}
+
+.fh5co-nav #fh5co-logo {
+  font-size: 0px;
 }
 
 input, textarea, select, .uneditable-input {

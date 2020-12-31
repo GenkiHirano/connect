@@ -17,7 +17,7 @@
             <%= link_to "編集", edit_live_companion_path(@live_companion), class: 'edit-live_companion' %>　
           <% end %>
           <% if current_user.admin? || (current_user == @live_companion.user) %>
-          <%= link_to "削除", live_companion_path(@live_companion), method: :delete, class: 'delete-live_companion',
+            <%= link_to "削除", live_companion_path(@live_companion), method: :delete, class: 'delete-live_companion',
                                           data: { confirm: "本当に削除しますか？" } %>
           <% end %>
         </div>
