@@ -8,9 +8,8 @@
 *= require style.css
 *= require magnific-popup.css
 */
-@import "style.scss";
+@import "style";
 @import "bootstrap-sprockets";
-@import "bootstrap.scss";
-@import "custom.scss";
+@import "bootstrap";
 @import "icomoon/style";
-
+@import "custom";
