@@ -90,7 +90,7 @@ RSpec.describe "LiveCompanions", type: :system do
         login_for_system(user)
         visit live_companion_path(live_companion)
         within find('.change-live_companion') do
-          click_on '削除'
+          click_on :delete
         end
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'
@@ -134,7 +134,7 @@ RSpec.describe "LiveCompanions", type: :system do
 
     context "ページレイアウト" do
       it "正しいタイトルが表示されること" do
-        expect(page).to have_title full_title('同行ライブ情報の編集')
+        expect(page).to have_title full_title('投稿の編集')
       end
 
       it "入力部分に適切なラベルが表示されること" do

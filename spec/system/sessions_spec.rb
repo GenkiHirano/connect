@@ -17,8 +17,7 @@ RSpec.describe "Sessions", type: :system do
     context "ログイン処理" do
       it "ゲストログイン機能が正常に動作することを確認" do
         click_link "ゲストログイン（閲覧用）"
-        expect(page).to have_content "music_snsへようこそ！ゲストユーザーとしてログインしました。"
-        expect(page).to have_link 'Home', href: root_path
+        expect(page).to have_content "connectへようこそ！ゲストユーザーとしてログインしました。"
         expect(page).to have_link 'connectとは？', href: about_path
         expect(page).to have_link 'ユーザー一覧', href: users_path
         expect(page).to have_link 'ログアウト', href: logout_path
@@ -75,14 +74,12 @@ RSpec.describe "Sessions", type: :system do
       end
 
       it "有効なユーザーでログインする前後でヘッダーが正しく表示されていることを確認" do
-        expect(page).to have_link 'Home', href: root_path
         expect(page).to have_link 'connectとは？', href: about_path
         expect(page).to have_link 'ユーザー登録(無料)', href: signup_path
         expect(page).to have_link 'ログイン', href: login_path
         fill_in "user_email", with: user.email
         fill_in "user_password", with: user.password
         click_button "ログイン"
-        expect(page).to have_link 'Home', href: root_path
         expect(page).to have_link 'connectとは？', href: about_path
         expect(page).to have_link 'ユーザー一覧', href: users_path
         expect(page).to have_link 'プロフィール', href: user_path(user)
