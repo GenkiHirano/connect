@@ -1,5 +1,15 @@
 class ApplicationController < ActionController::Base
+  before_action :set_search 
+  protect_from_forgery with: :exception
   include SessionsHelper
+
+  def set_search
+    if logged_in?
+      @search_word = params[:search][:name_cont] if params[:search]
+      @search = current_user.feed.paginate(page: params[:page], per_page: 5).ransack(params[:search])
+      @live_companions = @search.result(distinct: true)
+    end
+  end
 
   private
 
