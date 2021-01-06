@@ -12,7 +12,6 @@ class LiveCompanionsController < ApplicationController
   end
 
   def index
-    @log = Log.new
   end
 
   def create
