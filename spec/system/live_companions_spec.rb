@@ -123,6 +123,75 @@ RSpec.describe "LiveCompanions", type: :system do
         end
       end
     end
+
+    context "検索機能" do
+      context "ログインしている場合" do
+        before do
+          login_for_system(user)
+          visit root_path
+        end
+  
+        it "ログイン後の各ページに検索窓が表示されていること" do
+          expect(page).to have_css 'form#live_companion_search'
+          visit about_path
+          expect(page).to have_css 'form#live_companion_search'
+          visit users_path
+          expect(page).to have_css 'form#live_companion_search'
+          visit user_path(user)
+          expect(page).to have_css 'form#live_companion_search'
+          visit edit_user_path(user)
+          expect(page).to have_css 'form#live_companion_search'
+          visit following_user_path(user)
+          expect(page).to have_css 'form#live_companion_search'
+          visit followers_user_path(user)
+          expect(page).to have_css 'form#live_companion_search'
+          visit live_companions_path
+          expect(page).to have_css 'form#live_companion_search'
+          visit live_companion_path(live_companion)
+          expect(page).to have_css 'form#live_companion_search'
+          visit new_live_companion_path
+          expect(page).to have_css 'form#live_companion_search'
+          visit edit_live_companion_path(live_companion)
+          expect(page).to have_css 'form#live_companion_search'
+        end
+
+        it "フィードの中から検索ワードに該当する結果が表示されること" do
+          create(:live_companion, artist_name: 'YUI',  user: user)
+          create(:live_companion, artist_name: 'YUKI', user: other_user)
+  
+          fill_in 'q_artist_name_cont', with: 'YU'
+          click_button '検索'
+          expect(page).to have_css 'h3', text: "”YU”の検索結果：1件"
+          within find('.live_companions') do
+            expect(page).to have_css 'li', count: 1
+          end
+  
+          user.follow(other_user)
+          fill_in 'q_artist_name_cont', with: 'YU'
+          click_button '検索'
+          expect(page).to have_css 'h3', text: "”YU”の検索結果：2件"
+          within find('.live_companions') do
+            expect(page).to have_css 'li', count: 2
+          end
+        end
+
+        it "検索ワードを入れずに検索ボタンを押した場合、投稿一覧が表示されること" do
+          fill_in 'q_artist_name_cont', with: ''
+          click_button '検索'
+          expect(page).to have_css 'h3', text: "投稿一覧"
+          within find('.live_companions') do
+            expect(page).to have_css 'li', count: LiveCompanion.count
+          end
+        end
+      end
+
+      context "ログインしていない場合" do
+        it "検索窓が表示されないこと" do
+          visit root_path
+          expect(page).not_to have_css 'form#live_companion_search'
+        end
+      end
+    end
   end
 
   describe "投稿編集ページ" do

@@ -4,7 +4,7 @@
     <% if @search_word.present? %>
       <h3>”<%= @search_word %>”の検索結果：<%= @live_companions.count %>件</h3>
     <% else %>
-      <h3>アーティスト一覧</h3>
+      <h3>投稿一覧</h3>
     <% end %>
     <ul class="live_companions">
       <%= render @live_companions %>
