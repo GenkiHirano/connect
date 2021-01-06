@@ -20,6 +20,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem "mini_magick"
 gem 'pry-rails'
+gem 'ransack'
 
 group :development, :test do
   gem "factory_bot_rails"

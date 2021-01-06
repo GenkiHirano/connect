@@ -11,6 +11,9 @@ class LiveCompanionsController < ApplicationController
     @comment = Comment.new
   end
 
+  def index
+  end
+
   def create
     @live_companion = current_user.live_companions.build(live_companion_params)
     if @live_companion.save
