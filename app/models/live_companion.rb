@@ -7,7 +7,7 @@ class LiveCompanion < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
   validates :artist_name, presence: true, length: { maximum: 30 }
-  validates :live_name, presence: true, length: { maximum: 50 }
+  validates :live_name,   presence: true, length: { maximum: 50 }
   validates :schedule, presence: true
   validate  :date_not_before_today
   validates :live_venue, presence: true
