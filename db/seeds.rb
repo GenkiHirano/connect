@@ -1,33 +1,195 @@
-User.create!(name: "山田 太郎",
-             email: "sample@example.com",
-             password: "foobar",
-             password_confirmation: "foobar",
-             admin: true)
+User.create!(
+  [
+    {
+      name: "米津玄師ファン",
+      email: "yonezu@example.com",
+      password: "yonezu",
+      password_confirmation: "yonezu",
+      admin: true,
+    },
+    {
+      name: "サザンオールスターズファン",
+      email: "southern@example.com",
+      password: "southern",
+      password_confirmation: "southern",
+    },
+    {
+      name: "J-pop大好きさん",
+      email: "j-poppop@example.com",
+      password: "j-poppop",
+      password_confirmation: "j-poppop",
+    },
+    {
+      name: "ロック大好きさん",
+      email: "rockrock@example.com",
+      password: "rockrock",
+      password_confirmation: "rockrock",
+    },
+    {
+      name: "採用担当様",
+      email: "recruit@example.com",
+      password: "password",
+      password_confirmation: "password",
+    },
+  ]
+)
 
-99.times do |n|
-name  = Faker::Name.name
-email = "sample-#{n + 1}@example.com"
-password = "password"
-User.create!(name: name,
-             email: email,
-             password: password,
-             password_confirmation: password)
-end
+user1 = User.find(1)
+user2 = User.find(2)
+user3 = User.find(3)
+user4 = User.find(4)
+user5 = User.find(5)
+user5.follow(user1)
+user5.follow(user2)
+user5.follow(user3)
+user5.follow(user4)
 
-10.times do |n|
-  LiveCompanion.create!(
-    artist_name: "米津玄師",
-    live_name: "米津玄師 2020 TOUR / HYPE",
-    schedule: "2030-8-6",
-    live_venue: "埼玉スーパーアリーナ",
-    live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
-    user_id: 1
-  )
-end
+LiveCompanion.create!(
+  [
+    {
+      artist_name: "米津玄師",
+      live_name: "米津玄師 2020 TOUR / HYPE",
+      schedule: "2021-2-27",
+      live_venue: "宮城セキスイハイムスーパーアリーナ",
+      live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+      user_id: 1
+    },
+    {
+      artist_name: "米津玄師",
+      live_name: "米津玄師 2020 TOUR / HYPE",
+      schedule: "2021-3-7",
+      live_venue: "三重県営サンアリーナ",
+      live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+      user_id: 1
+    },
+    {
+      artist_name: "米津玄師",
+      live_name: "米津玄師 2020 TOUR / HYPE",
+      schedule: "2021-3-26",
+      live_venue: "マリンメッセ福岡",
+      live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+      user_id: 1
+    },
+    {
+      artist_name: "サザンオールスターズ",
+      live_name: "ALL THAT サザンオールスターズ",
+      schedule: "2021-5-23",
+      live_venue: "横浜アリーナ",
+      live_memo: "サザンのライブに一緒に行きましょう！",
+      user_id: 2
+    },
+    {
+      artist_name: "サザンオールスターズ",
+      live_name: "ALL THAT サザンオールスターズ",
+      schedule: "2021-11-7",
+      live_venue: "大阪厚生年金会館",
+      live_memo: "サザンのライブに一緒に行きましょう！",
+      user_id: 2
+    },
+    {
+      artist_name: "RADWIMPS",
+      live_name: "胎盤ツアー",
+      schedule: "2021-10-27",
+      live_venue: "東京ドーム",
+      live_memo: "胎盤ツアー行きましょう！",
+      user_id: 3
+    },
+    {
+      artist_name: "きゃりーぱみゅぱみゅ",
+      live_name: "ファッションモンスターツアー",
+      schedule: "2021-9-14",
+      live_venue: "東京ドーム",
+      live_memo: "誰か、一緒に踊りましょう...！！",
+      user_id: 3
+    },
+    {
+      artist_name: "あいみょん",
+      live_name: "AIMYON TOUR 2021 'ミート・ミート'",
+      schedule: "2021-12-7",
+      live_venue: "大阪城ホール",
+      live_memo: "大阪初めてです！誰か一緒に参加してくださいませんか...？",
+      user_id: 3
+    },
+    {
+      artist_name: "BISH",
+      live_name: "BiSH 'TO THE END,THE END'",
+      schedule: "2021-5-22",
+      live_venue: "神奈川・横浜アリーナ",
+      live_memo: "清掃員の方、一緒に行きましょう！",
+      user_id: 3
+    },
+    {
+      artist_name: "Official髭男dism",
+      live_name: "Official髭男dism Tour 2021",
+      schedule: "2021-4-4",
+      live_venue: "タワーレコード新宿店",
+      live_memo: "Pretender聴きたい！！！",
+      user_id: 3
+    },
+    {
+      artist_name: "嵐",
+      live_name: "ARASHI Anniversary Tour",
+      schedule: "2021-9-30",
+      live_venue: "東京ドーム",
+      live_memo: "実は嵐も好きです！誰か一緒に行こう！！",
+      user_id: 3
+    },
+    {
+      artist_name: "King Gnu",
+      live_name: "King Gnu Live Tour 2021 AW “CEREMONY”",
+      schedule: "2021-12-1",
+      live_venue: "日本ガイシホール",
+      live_memo: "初めまして！よかったら一緒に行きませんか...？ 白日聴きたい！",
+      user_id: 4
+    },
+    {
+      artist_name: "Vaundy",
+      live_name: "2nd one man live “strobo”",
+      schedule: "2021-10-10",
+      live_venue: "Zepp Haneda",
+      live_memo: "ゆったり観ましょう。",
+      user_id: 4
+    },
+    {
+      artist_name: "Mr.Children",
+      live_name: "Mr.Children Tour 2021 重力と呼吸",
+      schedule: "2021-10-6",
+      live_venue: "広島グリーンアリーナ",
+      live_memo: "ミスチル一緒に行きましょう！！",
+      user_id: 5
+    },
+    {
+      artist_name: "スピッツ",
+      live_name: "CONCERT TOUR 2021 名前のないツアー",
+      schedule: "2021-12-17",
+      live_venue: "日本青年館",
+      live_memo: "スピッツ一度でいいから観たいです。一緒に行ってくださいませんか？",
+      user_id: 5
+    },
+  ]
+)
 
-users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+live_companion1 = LiveCompanion.find(1)
+live_companion8 = LiveCompanion.find(8)
+live_companion14 = LiveCompanion.find(14)
+live_companion15 = LiveCompanion.find(15)
+
+user3.favorite(live_companion14)
+user4.favorite(live_companion15)
+user5.favorite(live_companion1)
+user5.favorite(live_companion8)
+
+live_companion14.comments.create(user_id: user3.id, content: "よかったら一緒に行きませんか...？")
+live_companion15.comments.create(user_id: user4.id, content: "はじめまして！一緒に行きましょう！")
+
+user5.notifications.create(user_id: user5.id, live_companion_id: live_companion14.id,
+                           from_user_id: user3.id, variety: 1)
+user5.notifications.create(user_id: user5.id, live_companion_id: live_companion14.id,
+                           from_user_id: user3.id, variety: 2, content: "よかったら一緒に行きませんか...？")
+user5.notifications.create(user_id: user5.id, live_companion_id: live_companion15.id,
+                           from_user_id: user4.id, variety: 1)
+user5.notifications.create(user_id: user5.id, live_companion_id: live_companion15.id,
+                           from_user_id: user4.id, variety: 2, content: "はじめまして！一緒に行きましょう！")
+
+user3.live_list(live_companion14)
+user4.live_list(live_companion15)
