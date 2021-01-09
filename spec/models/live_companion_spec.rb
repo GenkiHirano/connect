@@ -38,10 +38,10 @@ RSpec.describe LiveCompanion, type: :model do
       expect(live_companion.errors[:artist_name]).to include("は30文字以内で入力してください")
     end
 
-    it "ライブ名が30文字以内であること" do
-      live_companion = build(:live_companion, live_name: "あ" * 31)
+    it "ライブ名が50文字以内であること" do
+      live_companion = build(:live_companion, live_name: "あ" * 51)
       live_companion.valid?
-      expect(live_companion.errors[:live_name]).to include("は30文字以内で入力してください")
+      expect(live_companion.errors[:live_name]).to include("は50文字以内で入力してください")
     end
 
     it "ライブメモが140文字以内であること" do

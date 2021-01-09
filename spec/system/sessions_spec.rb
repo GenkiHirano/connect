@@ -17,7 +17,7 @@ RSpec.describe "Sessions", type: :system do
     context "ログイン処理" do
       it "ゲストログイン機能が正常に動作することを確認" do
         click_link "ゲストログイン（閲覧用）"
-        expect(page).to have_content "connectへようこそ！ゲストユーザーとしてログインしました。"
+        expect(page).to have_content "connectへようこそ！ゲストユーザー様としてログインしました。"
         expect(page).to have_link 'connectとは？', href: about_path
         expect(page).to have_link 'ユーザー一覧', href: users_path
         expect(page).to have_link 'ログアウト', href: logout_path
