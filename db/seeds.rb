@@ -26,8 +26,8 @@ User.create!(
       password_confirmation: "rockrock",
     },
     {
-      name: "採用担当様",
-      email: "recruit@example.com",
+      name: "ゲストユーザー様",
+      email: "guest@example.com",
       password: "password",
       password_confirmation: "password",
     },
