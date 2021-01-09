@@ -16,6 +16,9 @@
     </div>
     <div class="col-md-7">
       <p><%= link_to @live_companion.artist_name, live_companion_path(@live_companion) %></p>
+      <p class="live_list-live_companion-live_name"><%= @live_companion.live_name %></p><br>
+      <p class="live_list-live_companion-schedule"><%= @live_companion.schedule %></p><br>
+      <p class="live_list-live_companion-live_venue"><%= @live_companion.live_venue %></p><br>
       <p class="live_list-live_companion-live_memo"><%= @live_companion.live_memo %></p>
     </div>
     <div class="col-md-3">
