@@ -130,7 +130,7 @@ RSpec.describe "LiveCompanions", type: :system do
           login_for_system(user)
           visit root_path
         end
-  
+
         it "ログイン後の各ページに検索窓が表示されていること" do
           expect(page).to have_css 'form#live_companion_search'
           visit about_path
@@ -158,7 +158,7 @@ RSpec.describe "LiveCompanions", type: :system do
         it "フィードの中から検索ワードに該当する結果が表示されること" do
           create(:live_companion, artist_name: 'YUI',  live_name: 'CHE.R.RY.ツアー tokyo',  user: user)
           create(:live_companion, artist_name: 'YUKI', live_name: 'CHE.R.RY.ツアー saga',   user: other_user)
-  
+
           fill_in 'q[artist_name_or_live_name_cont]', with: 'YU'
           click_button '検索'
           expect(page).to have_css 'h3', text: "”YU”の検索結果：1件"
@@ -172,7 +172,7 @@ RSpec.describe "LiveCompanions", type: :system do
           within find('.live_companions') do
             expect(page).to have_css 'li', count: 1
           end
-  
+
           user.follow(other_user)
           fill_in 'q[artist_name_or_live_name_cont]', with: 'YU'
           click_button '検索'
