@@ -156,27 +156,41 @@ RSpec.describe "LiveCompanions", type: :system do
         end
 
         it "フィードの中から検索ワードに該当する結果が表示されること" do
-          create(:live_companion, artist_name: 'YUI',  user: user)
-          create(:live_companion, artist_name: 'YUKI', user: other_user)
+          create(:live_companion, artist_name: 'YUI',  live_name: 'CHE.R.RY.ツアー tokyo',  user: user)
+          create(:live_companion, artist_name: 'YUKI', live_name: 'CHE.R.RY.ツアー saga',   user: other_user)
   
-          fill_in 'q_artist_name_cont', with: 'YU'
+          fill_in 'q[artist_name_or_live_name_cont]', with: 'YU'
           click_button '検索'
           expect(page).to have_css 'h3', text: "”YU”の検索結果：1件"
           within find('.live_companions') do
             expect(page).to have_css 'li', count: 1
           end
+
+          fill_in 'q[artist_name_or_live_name_cont]', with: 'CHE.R.RY.ツアー'
+          click_button '検索'
+          expect(page).to have_css 'h3', text: "”CHE.R.RY.ツアー”の検索結果：1件"
+          within find('.live_companions') do
+            expect(page).to have_css 'li', count: 1
+          end
   
           user.follow(other_user)
-          fill_in 'q_artist_name_cont', with: 'YU'
+          fill_in 'q[artist_name_or_live_name_cont]', with: 'YU'
           click_button '検索'
           expect(page).to have_css 'h3', text: "”YU”の検索結果：2件"
+          within find('.live_companions') do
+            expect(page).to have_css 'li', count: 2
+          end
+
+          fill_in 'q[artist_name_or_live_name_cont]', with: 'CHE.R.RY.ツアー'
+          click_button '検索'
+          expect(page).to have_css 'h3', text: "”CHE.R.RY.ツアー”の検索結果：2件"
           within find('.live_companions') do
             expect(page).to have_css 'li', count: 2
           end
         end
 
         it "検索ワードを入れずに検索ボタンを押した場合、投稿一覧が表示されること" do
-          fill_in 'q_artist_name_cont', with: ''
+          fill_in 'q[artist_name_or_live_name_cont]', with: ''
           click_button '検索'
           expect(page).to have_css 'h3', text: "投稿一覧"
           within find('.live_companions') do
