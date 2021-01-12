@@ -271,7 +271,7 @@ RSpec.describe "Users", type: :system do
           expect(page).to have_content other_live_companion.artist_name
           expect(page).to have_content other_live_companion.live_name
           expect(page).to have_content other_live_companion.live_memo
-          expect(page).to have_content other_live_companion.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+          other_live_companion.created_at.strftime("%Y/%m/%d(%a) %H:%M")
         end
 
         it "コメントによって通知が作成されること" do

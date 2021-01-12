@@ -9,9 +9,9 @@ class StaticPagesController < ApplicationController
   end
 
   def new_guest
-    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "ゲストユーザー様"
-      user.password = SecureRandom.urlsafe_base64
+    user = User.find_or_create_by!(email: 'guest@example.com') do |guest_user|
+      guest_user.name = "ゲストユーザー様"
+      guest_user.password = SecureRandom.urlsafe_base64
     end
     log_in user
     flash[:success] = "connectへようこそ！ゲストユーザー様としてログインしました。"

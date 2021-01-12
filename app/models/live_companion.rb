@@ -26,6 +26,8 @@ class LiveCompanion < ApplicationRecord
     end
 
     def date_not_before_today
-      errors.add(:schedule, "は今日以降のものを選択してください") if schedule.nil? || schedule < Date.today
+      if schedule.nil? || schedule < Date.today
+        errors.add(:schedule, "は今日以降のものを選択してください")
+      end
     end
 end

@@ -83,7 +83,8 @@ class User < ApplicationRecord
   end
 
   def live_list(live_companion)
-    LiveList.create!(user_id: live_companion.user_id, live_companion_id: live_companion.id, from_user_id: id)
+    LiveList.create!(user_id: live_companion.user_id,
+                     live_companion_id: live_companion.id, from_user_id: id)
   end
 
   def unlive_list(live_list)

@@ -43,7 +43,8 @@ class LiveCompanionsController < ApplicationController
     if current_user.admin? || current_user?(@live_companion.user)
       @live_companion.destroy
       flash[:success] = "投稿が削除されました"
-      redirect_to request.referrer == user_url(@live_companion.user) ? user_url(@live_companion.user) : root_url
+      redirect_to request.referrer ==
+      user_url(@live_companion.user) ? user_url(@live_companion.user) : root_url
     else
       flash[:danger] = "他人の投稿は削除できません"
       redirect_to root_url
@@ -53,7 +54,8 @@ class LiveCompanionsController < ApplicationController
   private
 
     def live_companion_params
-      params.require(:live_companion).permit(:artist_name, :live_name, :live_memo, :schedule, :live_venue, :picture)
+      params.require(:live_companion).permit(:artist_name, :live_name, :live_memo,
+                                             :schedule, :live_venue, :picture)
     end
 
     def correct_user
