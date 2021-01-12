@@ -69,3 +69,6 @@ Layout/MultilineArrayBraceLayout:
 
 Airbnb/ContinuationSlash:
   Enabled: false
+
+LineLength:
+  Max: 105
