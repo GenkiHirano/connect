@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_12_10_060853) do
-
   create_table "comments", force: :cascade do |t|
     t.integer "live_companion_id"
     t.integer "user_id"
@@ -27,7 +26,8 @@ ActiveRecord::Schema.define(version: 2020_12_10_060853) do
     t.integer "live_companion_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "live_companion_id"], name: "index_favorites_on_user_id_and_live_companion_id", unique: true
+    t.index ["user_id", "live_companion_id"],
+            name: "index_favorites_on_user_id_and_live_companion_id", unique: true
   end
 
   create_table "live_companions", force: :cascade do |t|
@@ -70,7 +70,8 @@ ActiveRecord::Schema.define(version: 2020_12_10_060853) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id", "followed_id"],
+            name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 

@@ -81,7 +81,8 @@ RSpec.describe "LiveCompanions", type: :system do
         expect(page).to have_content live_companion.schedule
         expect(page).to have_content live_companion.live_venue
         expect(page).to have_content live_companion.live_memo
-        expect(page).to have_link nil, href: live_companion_path(live_companion), class: 'live_companion-picture'
+        expect(page).to have_link nil, href: live_companion_path(live_companion),
+                                       class: 'live_companion-picture'
       end
     end
 
@@ -156,8 +157,10 @@ RSpec.describe "LiveCompanions", type: :system do
         end
 
         it "フィードの中から検索ワードに該当する結果が表示されること" do
-          create(:live_companion, artist_name: 'YUI',  live_name: 'CHE.R.RY.ツアー tokyo',  user: user)
-          create(:live_companion, artist_name: 'YUKI', live_name: 'CHE.R.RY.ツアー saga',   user: other_user)
+          create(:live_companion, artist_name: 'YUI',
+                                  live_name: 'CHE.R.RY.ツアー tokyo', user: user)
+          create(:live_companion, artist_name: 'YUKI',
+                                  live_name: 'CHE.R.RY.ツアー saga',  user: other_user)
 
           fill_in 'q[artist_name_or_live_name_cont]', with: 'YU'
           click_button '検索'
@@ -242,8 +245,9 @@ RSpec.describe "LiveCompanions", type: :system do
         fill_in "live_companion[artist_name]", with: "編集：米津玄師"
         fill_in "live_companion[live_name]",   with: "編集：米津玄師 2020 TOUR / HYPE"
         fill_in "live_companion[live_venue]", with: "編集：埼玉スーパーアリーナ"
-        fill_in "live_companion[live_memo]",   with: "編集：誰か、米津玄師さんのライブ一緒に行きませんか...？"
-        attach_file "live_companion[picture]", "#{Rails.root}/spec/fixtures/test_live_companion2.jpg"
+        fill_in "live_companion[live_memo]", with: "編集：誰か、米津玄師さんのライブ一緒に行きませんか...？"
+        attach_file "live_companion[picture]",
+                    "#{Rails.root}/spec/fixtures/test_live_companion2.jpg"
         click_button "更新する"
         expect(page).to have_content "ライブ情報が更新されました！"
         expect(live_companion.reload.artist_name).to eq "編集：米津玄師"

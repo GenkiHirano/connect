@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   def create
     @live_companion = LiveCompanion.find(params[:live_companion_id])
     @user = @live_companion.user
-    @comment = @live_companion.comments.build(user_id: current_user.id, content: params[:comment][:content])
+    @comment = @live_companion.comments.build(user_id: current_user.id,
+                                              content: params[:comment][:content])
     if !@live_companion.nil? && @comment.save
       flash[:success] = "コメントを追加しました！"
       if @user != current_user
