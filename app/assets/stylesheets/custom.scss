@@ -141,27 +141,23 @@ input {
   border-bottom: 1px solid #eaeaea;
 }
 
-.user{
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
+.profile {
+  .user-name {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;  
+  }
+  .user-sex, .user-introduction, {
+    font-size: 15px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
 }
 
 .user-picture-box {
   margin-top: 0.5em;
   margin-left: 1em;
-}
-
-.show-user-name {
-  display: inline-block;
-}
-
-.account-edit {
-  margin-top: 20px;
-}
-
-.account-delete {
-  margin-top: 20px;
 }
 
 .title-about {
@@ -325,6 +321,7 @@ h2.artist_name {
 
 .stats {
   margin: 5px 0;
+  font-size: 15px;
 }
 
 .like-btn-unlike {
