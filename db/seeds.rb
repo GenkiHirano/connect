@@ -5,31 +5,36 @@ User.create!(
       email: "yonezu@example.com",
       password: "yonezu",
       password_confirmation: "yonezu",
-      admin: true,
+      introduction: "米津玄師が好きです！"
     },
     {
       name: "サザンオールスターズファン",
       email: "southern@example.com",
       password: "southern",
       password_confirmation: "southern",
+      introduction: "サザンオールスターズファン歴10年です。"
     },
     {
       name: "J-pop大好きさん",
       email: "j-poppop@example.com",
       password: "j-poppop",
       password_confirmation: "j-poppop",
+      introduction: "流行りのJ-popはなんでも聴きます！"
     },
     {
       name: "ロック大好きさん",
       email: "rockrock@example.com",
       password: "rockrock",
       password_confirmation: "rockrock",
+      introduction: "ロック最高！！！"
     },
     {
       name: "ゲストユーザー様",
       email: "guest@example.com",
       password: "password",
       password_confirmation: "password",
+      introduction: "誰か一緒にライブ行きましょう！",
+      admin: true
     },
   ]
 )
@@ -163,9 +168,17 @@ LiveCompanion.create!(
       live_name: "CONCERT TOUR 2021 名前のないツアー",
       schedule: "2021-12-17",
       live_venue: "日本青年館",
-      live_memo: "スピッツ一度でいいから観たいです。一緒に行ってくださいませんか？",
+      live_memo: "スピッツ、人生で一度だけでいいから観たいです。一緒に行ってくださいませんか？",
       user_id: 5
     },
+    {
+      artist_name: "米津玄師",
+      live_name: "米津玄師 2017 LIVE / RESCUE",
+      schedule: "2021-7-14",
+      live_venue: "東京国際フォーラム",
+      live_memo: "初めての米津さんのライブです。一緒に行きましょう！",
+      user_id: 5
+    }
   ]
 )
 
