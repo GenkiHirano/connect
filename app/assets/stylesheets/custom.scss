@@ -1,4 +1,5 @@
-$main-blue: #1976D2;
+$main-color: #3F51B5;
+$sub-color: #5C6BC0;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -92,9 +93,9 @@ input {
 }
 
 #error_explanation {
-  color: red;
+  color: $main-color;
   ul {
-    color: red;
+    color: $main-color;
     margin: 0 0 30px 0;
   }
 }
@@ -226,8 +227,8 @@ span.picture {
 .btn-record {
   margin-top: 3em;
   color: black;
-  background-color: $main-blue;
-  border-color: $main-blue;
+  background-color: $main-color;
+  border-color: $main-color;
 }
 
 .live_companion-user {
@@ -255,7 +256,7 @@ h3.live_companion-name {
 }
 
 .input-need {
-  color: red;
+  color: $main-color;
   font-size: 13px;
 }
 
@@ -324,7 +325,7 @@ h2.artist_name {
 }
 
 .like-btn-unlike {
-  color: red;
+  color: $main-color;
 }
 
 .like-btn-like {
@@ -360,11 +361,11 @@ a.like, a.unlike {
 }
 
 li.new_notification > a > span {
-  color: red;
+  color: $main-color;
 }
 
 .live_list-btn-unlist {
-  color: red;
+  color: $main-color;
   margin: 10px 0;
 }
 
@@ -417,23 +418,39 @@ body {
 }
 
 .fh5co-nav ul li.btn-cta a span {
-  background-color: #1976D2;
+  background-color: $main-color;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1976D2;
-  border-color: #1976D2;
+  background-color: $main-color;
+  border-color: $main-color;
 }
 
 a {
-  color: #1976D2;
+  color: $main-color;
 }
 
 .pagination > li > a, .pagination > li > span {
-  color: #1976D2;
+  color: $main-color;
 }
 
 .fh5co-nav ul li.active > a:after {
-  background: #1976D2;
+  background: $main-color;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: $main-color;
+  border-color: $main-color;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: $sub-color !important;
+  border-color: $sub-color !important;
+}
+
+.form-control:active, .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: $main-color;
 }
