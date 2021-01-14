@@ -344,7 +344,7 @@ a.like, a.unlike {
 .favorites {
   list-style: none;
   li {
-    padding: 10px 0;
+    padding-top: 10px;
     border-top: 1px solid #e8e8e8;
   }
 }
@@ -363,6 +363,10 @@ a.like, a.unlike {
 
 .notification-message {
   font-size: 16px;
+}
+
+.notification-live {
+  margin-bottom: 10px;
 }
 
 li.new_notification > a > span {
@@ -389,6 +393,12 @@ a.live_list, a.unlive_list {
   padding: 10px 0;
   border-top: 1px solid #e8e8e8;
   }
+}
+
+.live_list-delete {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .live_list-message {
@@ -447,6 +457,13 @@ a {
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
   background-color: $main-color;
   border-color: $main-color;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 5px 0;
+  border-radius: 4px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
