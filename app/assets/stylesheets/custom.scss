@@ -1,4 +1,4 @@
-$main-yellow: #fee856;
+$main-blue: #1976D2;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -8,11 +8,14 @@ $main-yellow: #fee856;
 
 .menu-1 a:hover {
   text-decoration: none;
-  text-decoration-width: 1px;
 }
 
 .fh5co-nav .top-menu {
-  padding: 18px 0;
+  padding: 10px 0;
+}
+
+.col-xs-10 {
+  top: 8px;
 }
 
 #logo {
@@ -56,15 +59,21 @@ $main-yellow: #fee856;
   padding: 0;
 }
 
+.display-t {
+  margin-top: 200px;
+  h1 {
+    font-size: 50px;
+    white-space: nowrap;
+  }
+  h2 {
+    font-size: 35px;
+    margin: 30px 0 20px 0;
+  }
+}
+
 #fh5co-wireframe {
   padding-top: 7em;
   padding-bottom: 0;
-}
-
-#fh5co-footer {
-  margin-top: 3em;
-  padding: 1em 0;
-  border-top: 1px solid #eaeaea;
 }
 
 .welcome-message {
@@ -217,8 +226,8 @@ span.picture {
 .btn-record {
   margin-top: 3em;
   color: black;
-  background-color: $main-yellow;
-  border-color: $main-yellow;
+  background-color: $main-blue;
+  border-color: $main-blue;
 }
 
 .live_companion-user {
@@ -285,7 +294,7 @@ h2.artist_name {
 
 .live_companion-picture img {
   max-width: 100%;
-	height: auto;
+  height: auto;
   box-sizing: border-box;
 }
 
@@ -396,11 +405,35 @@ a.live_list, a.unlive_list {
 
 
 .fh5co-cover {
-  background-image : url("top-page.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 100% auto;
   background-attachment: fixed;
-  background-color: #464646;
+}
+
+body {
+  background-color: #DEDEDE;
+}
+
+.fh5co-nav ul li.btn-cta a span {
+  background-color: #1976D2;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1976D2;
+  border-color: #1976D2;
+}
+
+a {
+  color: #1976D2;
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: #1976D2;
+}
+
+.fh5co-nav ul li.active > a:after {
+  background: #1976D2;
 }
