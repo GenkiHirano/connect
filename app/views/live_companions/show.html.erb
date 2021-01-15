@@ -10,8 +10,12 @@
         <%= render 'users/favorite_form' %>
         <%= render 'users/live_list_form' %>
       </div>
-      <div class="col-md-8">
-        <h2 class="artist_name"><%= @live_companion.artist_name %></h2>
+      <div class="col-md-8 escape-float">
+        <span class="artist_name"><%= @live_companion.artist_name %></span><br>
+        <span class="live_name"><%= @live_companion.live_name %></span><br>
+        <span class="schedule"><%= @live_companion.schedule %></span><br>
+        <span class="live_venue"><%= @live_companion.live_venue %></span><br>
+        <span class="live_memo"><%= @live_companion.live_memo %></span><br>
         <div class="change-live_companion">
           <% if current_user == @live_companion.user %>
             <%= link_to "編集", edit_live_companion_path(@live_companion), class: 'edit-live_companion' %>　
@@ -21,10 +25,6 @@
                                           data: { confirm: "本当に削除しますか？" } %>
           <% end %>
         </div>
-        <h4 class="live_name"><%= @live_companion.live_name %></h4>
-        <h4 class="schedule"><%= @live_companion.schedule %></h4>
-        <h4 class="live_memo"><%= @live_companion.live_venue %></h4>
-        <h4 class="live_memo"><%= @live_companion.live_memo %></h4>
         <div class="comment">
           <%= render "comments/feed_comments" %>
           <%= render "comments/new" %>
