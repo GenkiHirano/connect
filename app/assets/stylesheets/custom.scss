@@ -480,11 +480,13 @@ a {
 }
 
 .top-page {
-  background-image : url("live-contents000149.jpg");
+  background-image : url("top-page.jpg");
+  width: 100vw;
+  height: 100vw;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 100% auto;
   background-attachment: fixed;
-  background-color: #464646;
 }
+
