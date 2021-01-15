@@ -106,7 +106,6 @@ RSpec.describe "Users", type: :system do
       expect(user.reload.name).to eq "Edit Example User"
       expect(user.reload.email).to eq "edit-user@example.com"
       expect(user.reload.introduction).to eq "編集：初めまして"
-      expect(user.reload.sex).to eq "編集：男性"
     end
 
     it "無効なプロフィール更新をしようとすると、適切なエラーメッセージが表示されること" do
@@ -139,7 +138,6 @@ RSpec.describe "Users", type: :system do
       it "ユーザー情報が表示されることを確認" do
         expect(page).to have_content user.name
         expect(page).to have_content user.introduction
-        expect(page).to have_content user.sex
       end
 
       it "投稿の件数が表示されていることを確認" do

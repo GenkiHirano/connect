@@ -71,4 +71,4 @@ Airbnb/ContinuationSlash:
   Enabled: false
 
 LineLength:
-  Max: 105
+  Max: 120

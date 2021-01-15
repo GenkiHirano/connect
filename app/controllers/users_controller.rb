@@ -80,7 +80,7 @@ class UsersController < ApplicationController
     end
 
     def user_params_update
-      params.require(:user).permit(:name, :email, :introduction, :sex)
+      params.require(:user).permit(:name, :email, :introduction)
     end
 
     def correct_user
