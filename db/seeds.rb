@@ -124,7 +124,7 @@ LiveCompanion.create!(
       user_id: 3
     },
     {
-      artist_name: "BISH",
+      artist_name: "BiSH",
       live_name: "BiSH 'TO THE END,THE END'",
       schedule: "2021-5-22",
       live_venue: "神奈川・横浜アリーナ",
