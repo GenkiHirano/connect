@@ -91,7 +91,7 @@ RSpec.describe "LiveCompanions", type: :system do
         login_for_system(user)
         visit live_companion_path(live_companion)
         within find('.change-live_companion') do
-          click_on :delete
+          click_on '削除'
         end
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content '投稿が削除されました'

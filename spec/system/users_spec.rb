@@ -100,7 +100,6 @@ RSpec.describe "Users", type: :system do
       fill_in "ユーザー名", with: "Edit Example User"
       fill_in "メールアドレス", with: "edit-user@example.com"
       fill_in "自己紹介", with: "編集：初めまして"
-      fill_in "性別", with: "編集：男性"
       click_button "更新する"
       expect(page).to have_content "プロフィールが更新されました！"
       expect(user.reload.name).to eq "Edit Example User"
