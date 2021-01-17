@@ -9,8 +9,8 @@
   <body>
     <div class="fh5co-loader"></div>
     <div id="page">
-      <%= render 'layouts/navigation'%>
       <div id="fh5co-wireframe">
+        <%= render 'layouts/navigation'%>
         <div class="container">
           <% flash.each do |message_type, message| %>
             <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

@@ -1,7 +1,6 @@
 <% provide(:title, "プロフィール編集") %>
 <div id="fh5co-portfolio">
   <div class="container">
-    <%= link_to "プロフィール編集", edit_user_path %>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <%= form_for(@user) do |f| %>
@@ -22,10 +21,6 @@
         <div class = 'form-group'>
           <%= f.label :introduction %>　<span class="input-unneed">※任意</span>
           <%= f.text_area :introduction, size: "60x4", class: 'form-control', id: 'user_introduction' %>
-        </div>
-        <div class = 'form-group'>
-          <%= f.label :sex %>　<span class="input-unneed">※任意</span>
-          <%= f.text_field :sex, class: 'form-control', id: 'user_sex' %>
         </div>
         <%= f.submit "更新する", class: "btn btn-primary" %>
         <p></p>

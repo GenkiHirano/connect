@@ -1,4 +1,5 @@
-$main-yellow: #fee856;
+$main-color: #3F51B5;
+$sub-color: #5C6BC0;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -8,11 +9,14 @@ $main-yellow: #fee856;
 
 .menu-1 a:hover {
   text-decoration: none;
-  text-decoration-width: 1px;
 }
 
 .fh5co-nav .top-menu {
-  padding: 18px 0;
+  padding: 10px 0;
+}
+
+.col-xs-10 {
+  top: 8px;
 }
 
 #logo {
@@ -56,16 +60,24 @@ $main-yellow: #fee856;
   padding: 0;
 }
 
+.display-t {
+  margin-top: 200px;
+  color: yellow;
+  h1 {
+    font-size: 50px;
+    white-space: nowrap;
+  }
+  h2 {
+    font-size: 35px;
+    margin: 30px 0 20px 0;
+  }
+}
+
 #fh5co-wireframe {
   padding-top: 7em;
   padding-bottom: 0;
 }
 
-#fh5co-footer {
-  margin-top: 3em;
-  padding: 1em 0;
-  border-top: 1px solid #eaeaea;
-}
 
 .welcome-message {
   display: inline-block;
@@ -83,9 +95,9 @@ input {
 }
 
 #error_explanation {
-  color: red;
+  color: $main-color;
   ul {
-    color: red;
+    color: $main-color;
     margin: 0 0 30px 0;
   }
 }
@@ -130,27 +142,23 @@ input {
   border-bottom: 1px solid #eaeaea;
 }
 
-.user{
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
+.profile {
+  .user-name {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;  
+  }
+  .user-sex, .user-introduction, {
+    font-size: 15px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
 }
 
 .user-picture-box {
   margin-top: 0.5em;
   margin-left: 1em;
-}
-
-.show-user-name {
-  display: inline-block;
-}
-
-.account-edit {
-  margin-top: 20px;
-}
-
-.account-delete {
-  margin-top: 20px;
 }
 
 .title-about {
@@ -185,19 +193,6 @@ input {
     margin-top: 5em;
     padding-top: 0;
   }
-  .live_memo {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
 }
 
 aside {
@@ -217,8 +212,8 @@ span.picture {
 .btn-record {
   margin-top: 3em;
   color: black;
-  background-color: $main-yellow;
-  border-color: $main-yellow;
+  background-color: $main-color;
+  border-color: $main-color;
 }
 
 .live_companion-user {
@@ -242,11 +237,11 @@ h3.live_companion-name {
 }
 
 .live_list-button {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .input-need {
-  color: red;
+  color: $main-color;
   font-size: 13px;
 }
 
@@ -254,19 +249,38 @@ h3.live_companion-name {
   font-size: 13px;
 }
 
-.artist_name {
-  display: inline-block;
+.col-md-8 {
+  .artist_name {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  .live_name, .schedule, .live_venue, .live_memo {
+    font-size: 15px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  .user_picture {
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+  }  
+  .user_name {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+.col-md-9 {
+  margin-top: 20px;
 }
 
 h2.artist_name {
   font-size: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
-  display: inline-block;
-}
-
-.live_name h4 {
-  font-size: 20px;
   display: inline-block;
 }
 
@@ -285,7 +299,7 @@ h2.artist_name {
 
 .live_companion-picture img {
   max-width: 100%;
-	height: auto;
+  height: auto;
   box-sizing: border-box;
 }
 
@@ -312,13 +326,16 @@ h2.artist_name {
 
 .stats {
   margin: 5px 0;
+  font-size: 15px;
 }
 
 .like-btn-unlike {
-  color: red;
+  margin-top: 10px;
+  color: $main-color;
 }
 
 .like-btn-like {
+  margin-top: 10px;
   color: grey;
 }
 
@@ -329,7 +346,7 @@ a.like, a.unlike {
 .favorites {
   list-style: none;
   li {
-    padding: 10px 0;
+    padding-top: 10px;
     border-top: 1px solid #e8e8e8;
   }
 }
@@ -350,18 +367,22 @@ a.like, a.unlike {
   font-size: 16px;
 }
 
+.notification-live {
+  margin-bottom: 10px;
+}
+
 li.new_notification > a > span {
-  color: red;
+  color: $main-color;
 }
 
 .live_list-btn-unlist {
-  color: red;
-  margin: 10px 0;
+  color: $main-color;
+  margin-top: 8px;
 }
 
 .live_list-btn-list {
   color: grey;
-  margin: 10px 0;
+  margin-top: 8px;
 }
 
 a.live_list, a.unlive_list {
@@ -374,6 +395,12 @@ a.live_list, a.unlive_list {
   padding: 10px 0;
   border-top: 1px solid #e8e8e8;
   }
+}
+
+.live_list-delete {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .live_list-message {
@@ -396,11 +423,70 @@ a.live_list, a.unlive_list {
 
 
 .fh5co-cover {
-  background-image : url("top-page.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-size: 100% auto;
   background-attachment: fixed;
-  background-color: #464646;
 }
+
+body {
+  background-color: #DEDEDE;
+}
+
+.fh5co-nav ul li.btn-cta a span {
+  background-color: $main-color;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $main-color;
+  border-color: $main-color;
+}
+
+a {
+  color: $main-color;
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: $main-color;
+}
+
+.fh5co-nav ul li.active > a:after {
+  background: $main-color;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: $main-color;
+  border-color: $main-color;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background: $sub-color !important;
+  border-color: $sub-color !important;
+}
+
+.form-control:active, .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: $main-color;
+}
+
+.top-page {
+  background-image : url("top-page.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100% auto;
+  background-attachment: fixed;
+}
+

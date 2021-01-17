@@ -5,31 +5,36 @@ User.create!(
       email: "yonezu@example.com",
       password: "yonezu",
       password_confirmation: "yonezu",
-      admin: true,
+      introduction: "米津玄師が好きです！"
     },
     {
       name: "サザンオールスターズファン",
       email: "southern@example.com",
       password: "southern",
       password_confirmation: "southern",
+      introduction: "サザンオールスターズファン歴10年です。"
     },
     {
       name: "J-pop大好きさん",
       email: "j-poppop@example.com",
       password: "j-poppop",
       password_confirmation: "j-poppop",
+      introduction: "流行りのJ-popはなんでも聴きます！"
     },
     {
       name: "ロック大好きさん",
       email: "rockrock@example.com",
       password: "rockrock",
       password_confirmation: "rockrock",
+      introduction: "ロック最高！！！"
     },
     {
       name: "ゲストユーザー様",
       email: "guest@example.com",
       password: "password",
       password_confirmation: "password",
+      introduction: "誰か一緒にライブ行きましょう！",
+      admin: true
     },
   ]
 )
@@ -52,6 +57,7 @@ LiveCompanion.create!(
       schedule: "2021-2-27",
       live_venue: "宮城セキスイハイムスーパーアリーナ",
       live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+      picture: open("#{Rails.root}/public/images/artist-picture/Kenshi Yonezu.jpg"),
       user_id: 1
     },
     {
@@ -60,6 +66,7 @@ LiveCompanion.create!(
       schedule: "2021-3-7",
       live_venue: "三重県営サンアリーナ",
       live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+      picture: open("#{Rails.root}/public/images/artist-picture/Kenshi Yonezu.jpg"),
       user_id: 1
     },
     {
@@ -68,6 +75,7 @@ LiveCompanion.create!(
       schedule: "2021-3-26",
       live_venue: "マリンメッセ福岡",
       live_memo: "誰か、米津玄師さんのライブに一緒に行きませんか...？",
+      picture: open("#{Rails.root}/public/images/artist-picture/Kenshi Yonezu.jpg"),
       user_id: 1
     },
     {
@@ -76,6 +84,7 @@ LiveCompanion.create!(
       schedule: "2021-5-23",
       live_venue: "横浜アリーナ",
       live_memo: "サザンのライブに一緒に行きましょう！",
+      picture: open("#{Rails.root}/public/images/artist-picture/Southern All Stars.jpg"),
       user_id: 2
     },
     {
@@ -84,6 +93,7 @@ LiveCompanion.create!(
       schedule: "2021-11-7",
       live_venue: "大阪厚生年金会館",
       live_memo: "サザンのライブに一緒に行きましょう！",
+      picture: open("#{Rails.root}/public/images/artist-picture/Southern All Stars.jpg"),
       user_id: 2
     },
     {
@@ -92,6 +102,7 @@ LiveCompanion.create!(
       schedule: "2021-10-27",
       live_venue: "東京ドーム",
       live_memo: "胎盤ツアー行きましょう！",
+      picture: open("#{Rails.root}/public/images/artist-picture/RADWIMPS.jpg"),
       user_id: 3
     },
     {
@@ -100,6 +111,7 @@ LiveCompanion.create!(
       schedule: "2021-9-14",
       live_venue: "東京ドーム",
       live_memo: "誰か、一緒に踊りましょう...！！",
+      picture: open("#{Rails.root}/public/images/artist-picture/Kyary Pamyu Pamyu.jpg"),
       user_id: 3
     },
     {
@@ -108,14 +120,16 @@ LiveCompanion.create!(
       schedule: "2021-12-7",
       live_venue: "大阪城ホール",
       live_memo: "大阪初めてです！誰か一緒に参加してくださいませんか...？",
+      picture: open("#{Rails.root}/public/images/artist-picture/Aimyon.jpg"),
       user_id: 3
     },
     {
-      artist_name: "BISH",
+      artist_name: "BiSH",
       live_name: "BiSH 'TO THE END,THE END'",
       schedule: "2021-5-22",
       live_venue: "神奈川・横浜アリーナ",
       live_memo: "清掃員の方、一緒に行きましょう！",
+      picture: open("#{Rails.root}/public/images/artist-picture/BiSH.jpg"),
       user_id: 3
     },
     {
@@ -124,6 +138,7 @@ LiveCompanion.create!(
       schedule: "2021-4-4",
       live_venue: "タワーレコード新宿店",
       live_memo: "Pretender聴きたい！！！",
+      picture: open("#{Rails.root}/public/images/artist-picture/Official Hige Dandism.jpg"),
       user_id: 3
     },
     {
@@ -132,6 +147,7 @@ LiveCompanion.create!(
       schedule: "2021-9-30",
       live_venue: "東京ドーム",
       live_memo: "実は嵐も好きです！誰か一緒に行こう！！",
+      picture: open("#{Rails.root}/public/images/artist-picture/ARASHI.jpg"),
       user_id: 3
     },
     {
@@ -140,6 +156,7 @@ LiveCompanion.create!(
       schedule: "2021-12-1",
       live_venue: "日本ガイシホール",
       live_memo: "初めまして！よかったら一緒に行きませんか...？ 白日聴きたい！",
+      picture: open("#{Rails.root}/public/images/artist-picture/King Gnu.jpg"),
       user_id: 4
     },
     {
@@ -148,6 +165,7 @@ LiveCompanion.create!(
       schedule: "2021-10-10",
       live_venue: "Zepp Haneda",
       live_memo: "ゆったり観ましょう。",
+      picture: open("#{Rails.root}/public/images/artist-picture/Vaundy.jpg"),
       user_id: 4
     },
     {
@@ -156,6 +174,7 @@ LiveCompanion.create!(
       schedule: "2021-10-6",
       live_venue: "広島グリーンアリーナ",
       live_memo: "ミスチル一緒に行きましょう！！",
+      picture: open("#{Rails.root}/public/images/artist-picture/Mr.Children.jpg"),
       user_id: 5
     },
     {
@@ -163,9 +182,19 @@ LiveCompanion.create!(
       live_name: "CONCERT TOUR 2021 名前のないツアー",
       schedule: "2021-12-17",
       live_venue: "日本青年館",
-      live_memo: "スピッツ一度でいいから観たいです。一緒に行ってくださいませんか？",
+      live_memo: "スピッツ、人生で一度だけでいいから観たいです。一緒に行ってくださいませんか？",
+      picture: open("#{Rails.root}/public/images/artist-picture/Spitz.jpg"),
       user_id: 5
     },
+    {
+      artist_name: "米津玄師",
+      live_name: "米津玄師 2017 LIVE / RESCUE",
+      schedule: "2021-7-14",
+      live_venue: "東京国際フォーラム",
+      live_memo: "初めての米津さんのライブです。一緒に行きましょう！",
+      picture: open("#{Rails.root}/public/images/artist-picture/Kenshi Yonezu.jpg"),
+      user_id: 5
+    }
   ]
 )
 

@@ -15,17 +15,19 @@
       <%= link_to((image_tag @live_companion.picture.url), live_companion_path(@live_companion), class: 'live_companion-picture') %>
     </div>
     <div class="col-md-7">
-      <p><%= link_to @live_companion.artist_name, live_companion_path(@live_companion) %></p>
-      <p class="live_list-live_companion-live_name"><%= @live_companion.live_name %></p><br>
-      <p class="live_list-live_companion-schedule"><%= @live_companion.schedule %></p><br>
-      <p class="live_list-live_companion-live_venue"><%= @live_companion.live_venue %></p><br>
-      <p class="live_list-live_companion-live_memo"><%= @live_companion.live_memo %></p>
-    </div>
-    <div class="col-md-3">
-      <%= link_to "リストから削除", "/live_lists/#{live_list.id}/destroy",
-                             method: :delete,
-                             class: "unlive_list",
-                             data: { confirm: "本当にリストから削除しますか？" } %>
+      <div class="col-md-8 escape-float">
+        <p><%= link_to @live_companion.artist_name, live_companion_path(@live_companion) %></p>
+        <p><%= @live_companion.live_name %></p>
+        <p><%= @live_companion.schedule %></p>
+        <p><%= @live_companion.live_venue %></p>
+        <p><%= @live_companion.live_memo %></p>
+        <p class="live_list-delete">
+          <%= link_to "リストから削除", "/live_lists/#{live_list.id}/destroy",
+                              method: :delete,
+                              class: "unlive_list",
+                              data: { confirm: "本当にリストから削除しますか？" } %>
+        </p>
+      </div>
     </div>
   </div>
 </li>
