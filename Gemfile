@@ -48,6 +48,12 @@ end
 group :production do
   gem 'pg'
   gem 'fog'
+  gem 'mysql2'
 end
 
+group :production, :staging do
+  gem 'unicorn'
+end
+
+gem 'dotenv-rails'
 gem 'tzinfo-data'
