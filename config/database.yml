@@ -12,7 +12,6 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
   adapter: mysql2
   encoding: utf8
   reconnect: false
