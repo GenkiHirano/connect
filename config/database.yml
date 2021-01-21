@@ -17,4 +17,4 @@ production:
   reconnect: false
   database: connect-genkihirano_production
   username: root
-  password: <%= ENV['DATABASE_PRO_PASSWORD'] %>
+  password:
