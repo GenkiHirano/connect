@@ -12,7 +12,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+    <<: *default
+    database: connect-genkihirano_production
+    username: root
+    password:
