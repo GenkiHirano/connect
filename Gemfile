@@ -47,7 +47,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog'
+  gem 'fog-aws'
   gem 'mysql2'
 end
 
