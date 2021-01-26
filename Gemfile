@@ -29,6 +29,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -48,6 +52,10 @@ end
 group :production do
   gem 'pg'
   gem 'fog'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 gem 'tzinfo-data'
