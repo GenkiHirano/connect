@@ -1,4 +1,4 @@
-lock '3.4.0'
+lock '3.15.0'
 
 set :application, 'connect-genkihirano'
 
