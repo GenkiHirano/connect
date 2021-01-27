@@ -16,7 +16,7 @@ set :puma_pid, "/var/www/connect/shared/tmp/pids/puma.pid"
 set :puma_access_log, "/var/www/connect/shared/log/puma.error.log"
 set :puma_error_log, "/var/www/connect/shared/log/puma.access.log"
 set :puma_preload_app, true
-
+set :branch, 'main'
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
