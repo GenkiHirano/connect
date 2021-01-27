@@ -33,6 +33,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'capistrano-nginx' # 追加
+  gem 'capistrano-yarn'  # 追加
+  gem 'capistrano3-puma' # 追加
 end
 
 group :development do
