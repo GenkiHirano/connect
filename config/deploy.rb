@@ -2,6 +2,7 @@ lock "~> 3.15.0"
 
 set :application, "connect_genkihirano"
 set :repo_url, "git@github.com:GenkiHirano/connect.git"
+set :branch, 'main'
 set :rbenv_ruby, File.read('.ruby-version').strip
 
 set :nginx_config_name, "#{fetch(:application)}.conf"
