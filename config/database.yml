@@ -13,7 +13,7 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
+  adapter: db/production.postgresql
   encoding: unicode
   pool: 5
   database: connect_production
