@@ -1,24 +1,43 @@
-# README
+# アプリケーションの概要
+ライブに一緒に参加する人を探せるマッチングSNSサービス https://connect-genkihirano.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 技術的ポイント
+・**AWS**にCapistranoを使って自動デプロイ
+・**RSpec**でModel, Request, Systemテスト記述（計197examples）  
+・**Ajax**を用いた非同期処理（フォロー/未フォロー、気になる登録/未登録などの切り替え表示）  
+・**Bootstrap**によるレスポンシブ対応  
+・**Rubocop**を使用したコード規約に沿った開発  
+・**8つのモデル**をそれぞれ関連付けて使用  
+・**PR・Issues**を使い擬似チーム開発
 
-Things you may want to cover:
+# アプリケーションの機能
+・ライブ同行者募集機能(投稿機能)
+・画像を正方形に整形して投稿(CarrierWave使用)
+・通知(気になる登録、コメントがあった場合)
+・検索(Ransackを使用)
+・別ユーザーのライブ同行者募集投稿に対して「一緒に行きたい！」リクエストを送信
+・ライブ予定リスト登録
+・気になる登録
+・コメント
+・フォロー / フォロー解除
+・ログイン / ログアウト
+・ゲストユーザーログイン
+・ログイン状態の保持
+・モデルに対するバリデーション
+・ページネーション
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使用技術
+・Ruby 2.6.6
+・Ruby on Rails 6.0.3
+・PostgreSQL 13.0
+・Nginx
+・Puma
+・AWS
+　・VPC
+　・EC2
+　・RDS
+　・Route 53
+　・S3
+・Capistrano
+・Rspec
+・RuboCop
