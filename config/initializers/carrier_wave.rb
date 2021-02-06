@@ -7,5 +7,6 @@ if Rails.env.production?
       aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
     }
     config.fog_directory = 'connect-genkihirano'
+    config.asset_host = "https://static.connect-genkihirano.com"
   end
 end
