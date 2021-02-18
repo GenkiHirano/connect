@@ -19,4 +19,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome
+  end
 end
