@@ -11,6 +11,7 @@
 
 # 技術的ポイント
 ・**AWS**にCapistranoを使って自動デプロイ  
+・**Docker**を使って仮想環境を作成  
 ・**RSpec**でModel, Request, Systemテスト記述（計197examples）  
 ・**Ajax**を用いた非同期処理（フォロー/未フォロー、気になる登録/未登録などの切り替え表示）  
 ・**Bootstrap**によるレスポンシブ対応  
@@ -47,5 +48,6 @@
 　・Route 53  
 　・S3  
 ・Capistrano  
+・Docker  
 ・Rspec  
 ・RuboCop  
