@@ -45,10 +45,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    # 管理者ユーザーの場合
     if current_user.admin?
       @user.destroy
       flash[:success] = "ユーザーの削除に成功しました"
       redirect_to users_url
+    # 管理者ユーザーではないが、自分のアカウントの場合
     elsif current_user?(@user)
       @user.destroy
       flash[:success] = "自分のアカウントを削除しました"
@@ -75,10 +77,12 @@ class UsersController < ApplicationController
 
   private
 
+    # ユーザー新規作成時に許可する属性
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
+    # プロフィール編集時に許可する属性
     def user_params_update
       params.require(:user).permit(:name, :email, :introduction)
     end
