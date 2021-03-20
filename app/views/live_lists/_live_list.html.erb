@@ -16,6 +16,14 @@
         <p><%= @live_companion.live_memo %></p>
       </div>
       <p class="live_companion-user">投稿者 <%= link_to user.name, user_path(user) %></p>
+
+      <p class="live_list-delete">
+          <%= link_to "リストから削除", "/live_lists/#{live_list.id}/destroy",
+                              method: :delete,
+                              class: "unlive_list",
+                              data: { confirm: "本当にリストから削除しますか？" } %>
+      </p>
+
     </div>
   </div>
 </li>
