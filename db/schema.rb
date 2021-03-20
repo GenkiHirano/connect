@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_12_10_060853) do
+
   create_table "comments", force: :cascade do |t|
     t.integer "live_companion_id"
     t.integer "user_id"
@@ -46,10 +47,9 @@ ActiveRecord::Schema.define(version: 2020_12_10_060853) do
   create_table "live_lists", force: :cascade do |t|
     t.integer "user_id"
     t.integer "live_companion_id"
-    t.integer "from_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_live_lists_on_user_id"
+    t.index ["user_id", "live_companion_id"], name: "index_live_lists_on_user_id_and_live_companion_id", unique: true
   end
 
   create_table "notifications", force: :cascade do |t|

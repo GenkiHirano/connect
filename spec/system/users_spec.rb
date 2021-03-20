@@ -377,18 +377,14 @@ RSpec.describe "Users", type: :system do
       expect(page).not_to have_css ".live_list-live_companion"
       user.live_list(live_companion)
       live_companion_2 = create(:live_companion, user: user)
-      other_user.live_list(live_companion_2)
+      user.live_list(live_companion_2)
       visit live_lists_path
       expect(page).to have_css ".live_list-live_companion", count: 2
       expect(page).to have_content live_companion.artist_name
+      expect(page).to have_content live_companion.live_name
+      expect(page).to have_content live_companion.schedule
+      expect(page).to have_content live_companion.live_venue
       expect(page).to have_content live_companion.live_memo
-      expect(page).to have_content LiveCompanion.last.created_at.strftime("%Y/%m/%d(%a) %H:%M")
-      expect(page).to have_content "この投稿をライブ予定リストに追加しました。"
-      expect(page).to have_content live_companion_2.artist_name
-      expect(page).to have_content live_companion_2.live_memo
-      expect(page).to have_content LiveCompanion.first.created_at.strftime("%Y/%m/%d(%a) %H:%M")
-      expect(page).to have_content "#{other_user.name}さんがこのライブに一緒に行きたい！リクエストをしました。"
-      expect(page).to have_link other_user.name, href: user_path(other_user)
       user.unlive_list(LiveCompanion.first)
       visit live_lists_path
       expect(page).to have_css ".live_list-live_companion", count: 1

@@ -33,19 +33,19 @@ RSpec.describe "ライブ予定リスト登録機能", type: :request do
       it "ライブのリスト登録/解除ができること" do
         expect {
           post "/live_lists/#{live_companion.id}/create"
-        }.to change(other_user.live_lists, :count).by(1)
+        }.to change(user.live_lists, :count).by(1)
         expect {
           delete "/live_lists/#{LiveList.first.id}/destroy"
-        }.to change(other_user.live_lists, :count).by(-1)
+        }.to change(user.live_lists, :count).by(-1)
       end
 
       it "ライブのAjaxによるリスト登録/解除ができること" do
         expect {
           post "/live_lists/#{live_companion.id}/create", xhr: true
-        }.to change(other_user.live_lists, :count).by(1)
+        }.to change(user.live_lists, :count).by(1)
         expect {
           delete "/live_lists/#{LiveList.first.id}/destroy", xhr: true
-        }.to change(other_user.live_lists, :count).by(-1)
+        }.to change(user.live_lists, :count).by(-1)
       end
     end
 

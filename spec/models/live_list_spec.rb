@@ -17,10 +17,5 @@ RSpec.describe LiveList, type: :model do
       live_list.live_companion_id = nil
       expect(live_list).not_to be_valid
     end
-
-    it "from_user_idがnilの場合、無効であること" do
-      live_list.from_user_id = nil
-      expect(live_list).not_to be_valid
-    end
   end
 end

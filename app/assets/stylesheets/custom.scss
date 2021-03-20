@@ -399,7 +399,7 @@ a.live_list, a.unlive_list {
 
 .live_list-delete {
   text-align: right;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -552,6 +552,9 @@ ol.main-use li.A:before {
 }
 ol.main-use li.B:before {
   content: "B";
+}
+ol.main-use li.C:before {
+  content: "C";
 }
 ol.main-use li:after {
   content:"";

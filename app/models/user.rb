@@ -83,8 +83,7 @@ class User < ApplicationRecord
   end
 
   def live_list(live_companion)
-    LiveList.create!(user_id: live_companion.user_id,
-                     live_companion_id: live_companion.id, from_user_id: id)
+    LiveList.create!(user_id: id, live_companion_id: live_companion.id)
   end
 
   def unlive_list(live_list)
@@ -92,7 +91,7 @@ class User < ApplicationRecord
   end
 
   def live_list?(live_companion)
-    !LiveList.find_by(live_companion_id: live_companion.id, from_user_id: id).nil?
+    !LiveList.find_by(user_id: id, live_companion_id: live_companion.id).nil?
   end
 
   private
