@@ -1,4 +1,4 @@
-lock "~> 3.14.1"
+lock "~> 3.16.0"
 
 set :application, "connect_genkihirano"
 set :repo_url, "git@github.com:GenkiHirano/connect.git"
