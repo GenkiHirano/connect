@@ -52,7 +52,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog-aws'
+  gem 'fog'
 end
 
 gem 'tzinfo-data'
