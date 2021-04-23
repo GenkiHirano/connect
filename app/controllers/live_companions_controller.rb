@@ -30,7 +30,7 @@ class LiveCompanionsController < ApplicationController
 
   def update
     @live_companion = LiveCompanion.find(params[:id])
-    if @live_companion.update_attributes(live_companion_params)
+    if @live_companion.update(live_companion_params)
       flash[:success] = "ライブ情報が更新されました！"
       redirect_to @live_companion
     else
