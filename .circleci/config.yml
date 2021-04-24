@@ -7,7 +7,6 @@ jobs:
         environment:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
-          BUNDLER_VERSION: 2.1.4
           DATABASE_URL: postgres://postgres:password@localhost:5432/connect_test
           RAILS_ENV: test
       - image: circleci/postgres:11-alpine
@@ -39,6 +38,14 @@ jobs:
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
+      - name: Run tests
+          env:
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      - run:
+          name: Database setup
+          command: bundle exec rake db:create
+      - run: bundle exec bin/webpack
       - run:
           name: bin/rspec
           command: bin/rspec
