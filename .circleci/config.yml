@@ -1,50 +1,22 @@
-version: 2
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
 jobs:
   build:
-    working_directory: ~/connect
     docker:
-      - image: circleci/ruby:2.6.6-node-browsers
-        environment:
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          DATABASE_URL: postgres://postgres:password@localhost:5432/connect_test
-          RAILS_ENV: test
-      - image: circleci/postgres:11-alpine
+      - image: circleci/ruby:2.6.6-stretch-node
+    executor: ruby/default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - connect-bundle-v1-{{ checksum "Gemfile.lock" }}
-            - connect-bundle-v1-
+      - run: gem install bundler:2.1.4
       - run:
-          name: Bundlerをinstall
-          command: |
-            gem update --system
-            gem install bundler -v 2.1.4
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-      - save_cache:
-          key: connect-bundle-v1-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
       - run:
           name: Yarnをinstall
           command: yarn install --cache-folder ~/.cache/yarn
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
-      - name: Run tests
-          env:
-          RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      - run:
-          name: Database setup
-          command: bundle exec rake db:create
       - run: bundle exec bin/webpack
       - run:
           name: bin/rspec
