@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
@@ -19,5 +19,6 @@ jobs:
           command: yarn install --cache-folder ~/.cache/yarn
       - run: bundle exec bin/webpack
       - run:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           name: bin/rspec
           command: bin/rspec
