@@ -12,6 +12,7 @@
 # 技術的ポイント
 ・**AWS**にCapistranoを使って自動デプロイ  
 ・**Docker**を用いた環境構築  
+・**CircleCI**を用いた自動テスト  
 ・**RSpec**でModel, Request, Systemテスト記述（計196examples）  
 ・**Ajax**を用いた非同期処理（フォロー/未フォロー、気になる登録/未登録などの切り替え表示）  
 ・**Bootstrap**によるレスポンシブ対応  
@@ -37,10 +38,10 @@
 # 使用技術
 ・Ruby 2.6.6  
 ・Ruby on Rails 6.0.3  
-・PostgreSQL 13.0  
+・Rspec  
+・RuboCop  
 ・Docker  
-・Nginx  
-・Puma  
+・CircleCI  
 ・AWS  
 　・VPC  
 　・EC2  
@@ -48,5 +49,6 @@
 　・Route 53  
 　・S3  
 ・Capistrano  
-・Rspec  
-・RuboCop  
+・PostgreSQL 13.0  
+・Nginx  
+・Puma  
