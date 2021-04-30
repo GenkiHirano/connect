@@ -343,7 +343,7 @@ RSpec.describe "Users", type: :system do
       expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
       link.click
       link = find('.unlive_list')
-      expect(link[:href]).to include "/live_lists/#{LiveCompanion.second.id}/destroy"
+      expect(link[:href]).to include "/live_lists/#{LiveList.first.id}/destroy"
       link.click
       link = find('.live_list')
       expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
@@ -355,7 +355,7 @@ RSpec.describe "Users", type: :system do
       expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
       link.click
       link = find('.unlive_list')
-      expect(link[:href]).to include "/live_lists/#{LiveCompanion.second.id}/destroy"
+      expect(link[:href]).to include "/live_lists/#{LiveList.first.id}/destroy"
       link.click
       link = find('.live_list')
       expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
@@ -366,7 +366,7 @@ RSpec.describe "Users", type: :system do
       expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
       link.click
       link = find('.unlive_list')
-      expect(link[:href]).to include "/live_lists/#{LiveCompanion.second.id}/destroy"
+      expect(link[:href]).to include "/live_lists/#{LiveList.first.id}/destroy"
       link.click
       link = find('.live_list')
       expect(link[:href]).to include "/live_lists/#{live_companion.id}/create"
