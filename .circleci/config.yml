@@ -45,5 +45,6 @@ jobs:
       - run:
           name: bin/rspec
           command: bin/rspec
-      - store_test_results:
-          path: /tmp/test-results
+      - run:
+          name: bundle exec rubocop
+          command: bundle exec rubocop
