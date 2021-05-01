@@ -1,8 +1,10 @@
 default: &default
   adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 10000
   host: db
+  username: postgres
+  password:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -14,13 +16,11 @@ test:
 
 production:
   <<: *default
-  <% if Rails.application.credentials.database.present? %>
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
-    database: connect_genkihirano_production
-    username: postgres
-    password: <%= Rails.application.credentials.db[:password] %>
-    host: <%= Rails.application.credentials.db[:hostname] %>
-  <% end %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: connect_genkihirano_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
 
