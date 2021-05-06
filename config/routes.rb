@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   get    :live_lists, to: 'live_lists#index'
   post   "live_lists/:live_companion_id/create" => "live_lists#create"
   delete "live_lists/:live_list_id/destroy" => "live_lists#destroy"
+  get 'maps/index'
+  root to: 'maps#index'
+  resources :maps, only: [:index]
 end
