@@ -163,7 +163,7 @@ LiveCompanion.create!(
       artist_name: "Vaundy",
       live_name: "2nd one man live “strobo”",
       schedule: "2022-10-10",
-      live_venue: "Zepp Haneda",
+      live_venue: "ZeppHaneda",
       live_memo: "ゆったり観ましょう。",
       picture: open("#{Rails.root}/public/images/artist-picture/Vaundy.jpg"),
       user_id: 4
