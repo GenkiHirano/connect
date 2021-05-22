@@ -16,13 +16,11 @@ test:
 
 production:
   <<: *default
-  <% if Rails.application.credentials.database.present? %>
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
-    database: connect_genkihirano_production
-    username: postgres
-    password: <%= Rails.application.credentials.db[:password] %>
-    host: <%= Rails.application.credentials.db[:hostname] %>
-  <% end %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: connect_genkihirano_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
 
